@@ -66,16 +66,24 @@ dependencies {
     implementation RxDependencies.rxJava
     implementation RxDependencies.rxAndroid
 
+    // DI
+    implementation DIDependencies.javaxInject
+
+    // Third Party
+    implementation ThirdPartyDependencies.gson
+
     // Testing
     testImplementation TestDependencies.junit
     testImplementation TestDependencies.junit5
     testImplementation TestDependencies.junit5Params
     testImplementation TestDependencies.mockitoCore
+    testImplementation TestDependencies.archComponentsTest
 
     testRuntimeOnly TestDependencies.junit5Engine
     testRuntimeOnly TestDependencies.junitVintage
 
     androidTestImplementation TestDependencies.mockitoAndroid
+    androidTestImplementation TestDependencies.archComponentsTest
     androidTestImplementation TestDependencies.supportAnnotations
     androidTestImplementation TestDependencies.testRunner
     androidTestImplementation TestDependencies.kotlinTest

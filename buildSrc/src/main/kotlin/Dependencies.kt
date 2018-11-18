@@ -20,6 +20,10 @@ object Versions {
     internal const val rxJavaVersion = "2.2.3"
     internal const val rxAndroidVersion = "2.1.0"
 
+    internal const val javaxInjectVersion = "1"
+
+    internal const val gsonVersion = "2.8.5"
+
     // region Distribution
     internal const val bintrayPluginVersion = "1.8.0"
     // endregion
@@ -63,6 +67,14 @@ object CoroutineDependencies {
 object RxDependencies {
     val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}"
     val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroidVersion}"
+}
+
+object DIDependencies {
+    val javaxInject = "javax.inject:javax.inject:${Versions.javaxInjectVersion}"
+}
+
+object ThirdPartyDependencies {
+    val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
 }
 
 object TestDependencies {
