@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -73,14 +72,15 @@ dependencies {
     implementation ThirdPartyDependencies.gson
 
     // Testing
-    testImplementation TestDependencies.junit
+    testRuntimeOnly TestDependencies.junit5Engine
+    testRuntimeOnly TestDependencies.junitVintage
+
+    testCompileOnly TestDependencies.junit
+
     testImplementation TestDependencies.junit5
     testImplementation TestDependencies.junit5Params
     testImplementation TestDependencies.mockitoCore
     testImplementation TestDependencies.archComponentsTest
-
-    testRuntimeOnly TestDependencies.junit5Engine
-    testRuntimeOnly TestDependencies.junitVintage
 
     androidTestImplementation TestDependencies.mockitoAndroid
     androidTestImplementation TestDependencies.archComponentsTest

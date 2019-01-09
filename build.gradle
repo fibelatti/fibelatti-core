@@ -12,7 +12,6 @@ buildscript {
         classpath Classpaths.gradlePlugin
         classpath Classpaths.kotlinPlugin
         classpath Classpaths.bintrayPlugin
-        classpath Classpaths.junit5Plugin
     }
 }
 

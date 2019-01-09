@@ -33,7 +33,6 @@ object Versions {
     internal const val testRunnerVersion = "1.0.1"
     internal const val mockitoVersion = "2.23.0"
     internal const val mockitoAndroidVersion = "2.18.3"
-    internal const val junit5pluginVersion = "1.3.1.1"
     internal const val junit5Version = "5.3.1"
     // endregion
 }
@@ -41,7 +40,6 @@ object Versions {
 object Classpaths {
     val gradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePluginVersion}"
     val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
-    val junit5Plugin = "de.mannodermaus.gradle.plugins:android-junit5:${Versions.junit5pluginVersion}"
     val bintrayPlugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintrayPluginVersion}"
 }
 
