@@ -13,7 +13,7 @@ Commonly used classes and extensions functions. Used to build Android projects i
 ## Built on top of:
 
 ```groovy
-"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.10"
+"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.11"
 
 "androidx.appcompat:appcompat:1.0.2"
 "com.google.android.material:material:1.0.0"
@@ -24,7 +24,7 @@ Commonly used classes and extensions functions. Used to build Android projects i
 "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
 "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0"
 
-"io.reactivex.rxjava2:rxjava:2.2.3"
+"io.reactivex.rxjava2:rxjava:2.2.4"
 "io.reactivex.rxjava2:rxandroid:2.1.0"
 
 "javax.inject:javax.inject:1" // to support Dagger 2
