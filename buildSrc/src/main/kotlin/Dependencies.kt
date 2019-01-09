@@ -1,6 +1,6 @@
 object Versions {
     internal const val gradlePluginVersion = "3.2.1"
-    internal const val kotlinVersion = "1.3.10"
+    internal const val kotlinVersion = "1.3.11"
 
     const val minSdkVersion = 19
     const val targetSdkVersion = 28
@@ -17,7 +17,7 @@ object Versions {
     internal const val coroutinesCoreVersion = "1.0.0"
     internal const val coroutinesAndroidVersion = "1.0.0"
 
-    internal const val rxJavaVersion = "2.2.3"
+    internal const val rxJavaVersion = "2.2.4"
     internal const val rxAndroidVersion = "2.1.0"
 
     internal const val javaxInjectVersion = "1"
@@ -30,7 +30,7 @@ object Versions {
 
     // region Testing
     internal const val jUnitVersion = "4.12"
-    internal const val testRunnerVersion = "1.0.1"
+    internal const val testRunnerVersion = "1.1.0"
     internal const val mockitoVersion = "2.23.0"
     internal const val mockitoAndroidVersion = "2.18.3"
     internal const val junit5Version = "5.3.1"

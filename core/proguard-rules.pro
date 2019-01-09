@@ -26,11 +26,27 @@
 
 # Kotlin
 -keep class kotlin.** { *; }
+-dontnote kotlin.coroutines.jvm.internal.DebugMetadataKt**
 -dontnote kotlin.internal.PlatformImplementationsKt
 -dontnote kotlin.jvm.internal.Reflection
 
+# Coroutines
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}
+
 # Material
--dontnote com.google.android.material.**
+-keepnames class androidx.** { *; }
+-keepnames interface androidx.** { *; }
+-keepnames class android.support.** { *; }
+-keepnames interface android.support.** { *; }
+-keepnames class com.google.android.material.** { *; }
 
 # Rx
 -dontnote io.reactivex.**
+
+# Gson
+-dontnote sun.misc.Unsafe
+-dontnote com.google.gson.**
