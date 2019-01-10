@@ -3,12 +3,12 @@ package com.fibelatti.core.android;
 import android.content.Context;
 import android.util.Log;
 import com.fibelatti.core.provider.ResourceProvider;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.squareup.moshi.Moshi;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.inject.Inject;
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /***
@@ -21,12 +21,12 @@ public class AppResourceProvider implements ResourceProvider {
     @NotNull
     private Context context;
     @NotNull
-    private Gson gson;
+    private Moshi moshi;
 
     @Inject
-    public AppResourceProvider(@NotNull Context context, @NotNull Gson gson) {
+    public AppResourceProvider(@NotNull Context context, @NotNull Moshi moshi) {
         this.context = context;
-        this.gson = gson;
+        this.moshi = moshi;
     }
 
     @NotNull
@@ -43,9 +43,18 @@ public class AppResourceProvider implements ResourceProvider {
 
     @Nullable
     @Override
-    public <T> T getJsonFromAssets(@NotNull String fileName, @NotNull TypeToken<T> type) {
+    public <T> T getJsonFromAssets(@NotNull String fileName, @NotNull Class<T> clazz) {
         try (InputStreamReader reader = new InputStreamReader(context.getAssets().open(fileName))) {
-            return gson.fromJson(reader, type.getType());
+            StringBuilder stringBuilder = new StringBuilder();
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            String read = bufferedReader.readLine();
+
+            while (read != null) {
+                stringBuilder.append(read);
+                read = bufferedReader.readLine();
+            }
+
+            return moshi.adapter(clazz).fromJson(stringBuilder.toString());
         } catch (Exception exception) {
             Log.d(TAG, TAG + ".getJsonFromAssets", exception);
         }

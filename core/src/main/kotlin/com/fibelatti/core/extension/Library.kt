@@ -1,7 +1,9 @@
 package com.fibelatti.core.extension
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.Moshi
 
-inline fun <reified T> Gson.fromJson(value: String): T =
-    fromJson(value, TypeToken.get(T::class.java).type)
+inline fun <reified T> Moshi.toJson(value: T): String =
+    adapter(T::class.java).toJson(value)
+
+inline fun <reified T> Moshi.fromJson(value: String): T? =
+    adapter(T::class.java).fromJson(value)

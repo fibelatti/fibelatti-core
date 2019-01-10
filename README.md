@@ -28,6 +28,8 @@ Commonly used classes and extensions functions. Used to build Android projects i
 "io.reactivex.rxjava2:rxandroid:2.1.0"
 
 "javax.inject:javax.inject:1" // to support Dagger 2
+
+"com.squareup.moshi:moshi-kotlin:1.8.0"
 ```
 
 ## License

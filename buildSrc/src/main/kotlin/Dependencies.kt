@@ -22,7 +22,7 @@ object Versions {
 
     internal const val javaxInjectVersion = "1"
 
-    internal const val gsonVersion = "2.8.5"
+    internal const val moshiVersion = "1.8.0"
 
     // region Distribution
     internal const val bintrayPluginVersion = "1.8.0"
@@ -73,7 +73,7 @@ object DIDependencies {
 }
 
 object ThirdPartyDependencies {
-    val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
+    val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
 }
 
 object TestDependencies {

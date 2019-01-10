@@ -53,7 +53,7 @@ dependencies {
     implementation DIDependencies.javaxInject
 
     // Third Party
-    implementation ThirdPartyDependencies.gson
+    implementation ThirdPartyDependencies.moshiKotlin
 
     // Testing
     testRuntimeOnly TestDependencies.junit5Engine
