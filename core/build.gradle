@@ -48,6 +48,7 @@ dependencies {
     // Support Library
     implementation SupportLibraryDependencies.supportLibrary
     implementation SupportLibraryDependencies.materialDesign
+    implementation SupportLibraryDependencies.supportAnnotations
 
     // Architecture Components
     implementation ArchitectureComponentDependencies.archComponents
@@ -56,10 +57,6 @@ dependencies {
     // Coroutines
     implementation CoroutineDependencies.coroutinesCore
     implementation CoroutineDependencies.coroutinesAndroid
-
-    // Rx
-    implementation RxDependencies.rxJava
-    implementation RxDependencies.rxAndroid
 
     // DI
     implementation DIDependencies.javaxInject
@@ -80,7 +77,6 @@ dependencies {
 
     androidTestImplementation TestDependencies.mockitoAndroid
     androidTestImplementation TestDependencies.archComponentsTest
-    androidTestImplementation TestDependencies.supportAnnotations
     androidTestImplementation TestDependencies.testRunner
     androidTestImplementation TestDependencies.kotlinTest
 }

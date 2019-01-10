@@ -50,6 +50,7 @@ object KotlinDependencies {
 object SupportLibraryDependencies {
     val supportLibrary = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"
     val materialDesign = "com.google.android.material:material:${Versions.materialDesignVersion}"
+    val supportAnnotations = "androidx.annotation:annotation:${Versions.supportAnnotationVersion}"
 }
 
 object ArchitectureComponentDependencies {
@@ -85,6 +86,5 @@ object TestDependencies {
     val kotlinTest = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlinVersion}"
     val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoVersion}"
     val mockitoAndroid = "org.mockito:mockito-android:${Versions.mockitoAndroidVersion}"
-    val supportAnnotations = "androidx.annotation:annotation:${Versions.supportAnnotationVersion}"
     val archComponentsTest = "android.arch.core:core-testing:${Versions.archComponentsVersion}"
 }
