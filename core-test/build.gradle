@@ -33,8 +33,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':core')
-
     // Kotlin
     implementation KotlinDependencies.kotlin
 

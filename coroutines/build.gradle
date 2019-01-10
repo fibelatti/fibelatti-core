@@ -36,12 +36,9 @@ dependencies {
     // Kotlin
     implementation KotlinDependencies.kotlin
 
-    // Support Library
-    implementation SupportLibraryDependencies.supportAnnotations
-
-    // Rx
-    implementation RxDependencies.rxJava
-    implementation RxDependencies.rxAndroid
+    // Coroutines
+    implementation CoroutineDependencies.coroutinesCore
+    implementation CoroutineDependencies.coroutinesAndroid
 
     // DI
     implementation DIDependencies.javaxInject

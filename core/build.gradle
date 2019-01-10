@@ -45,10 +45,6 @@ dependencies {
     implementation SupportLibraryDependencies.materialDesign
     implementation SupportLibraryDependencies.supportAnnotations
 
-    // Coroutines
-    implementation CoroutineDependencies.coroutinesCore
-    implementation CoroutineDependencies.coroutinesAndroid
-
     // DI
     implementation DIDependencies.javaxInject
 

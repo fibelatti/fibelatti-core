@@ -33,16 +33,18 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':coroutines')
+
     // Kotlin
     implementation KotlinDependencies.kotlin
 
-    // Support Library
-    implementation SupportLibraryDependencies.supportAnnotations
-
-    // Rx
-    implementation RxDependencies.rxJava
-    implementation RxDependencies.rxAndroid
+    // Coroutines
+    implementation CoroutineDependencies.coroutinesCore
 
     // DI
     implementation DIDependencies.javaxInject
+
+    // Testing
+    implementation TestDependencies.junit5
+    implementation TestDependencies.mockitoCore
 }
