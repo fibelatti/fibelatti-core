@@ -33,7 +33,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.fibelatti.core.R
-import com.fibelatti.core.platform.recyclerview.ItemOffsetDecoration
+import com.fibelatti.core.android.recyclerview.ItemOffsetDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout

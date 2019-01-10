@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform;
+package com.fibelatti.core.android;
 
 import android.content.Context;
 import android.util.Log;

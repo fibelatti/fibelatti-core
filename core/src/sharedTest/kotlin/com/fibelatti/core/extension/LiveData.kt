@@ -2,7 +2,7 @@ package com.fibelatti.core.extension
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.fibelatti.core.platform.Event
+import com.fibelatti.core.android.Event
 import org.junit.Assert
 import org.mockito.ArgumentMatchers
 import org.mockito.BDDMockito

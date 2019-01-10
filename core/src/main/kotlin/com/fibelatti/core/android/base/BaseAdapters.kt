@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform.base
+package com.fibelatti.core.android.base
 
 import android.view.View
 import android.view.ViewGroup

@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform.base
+package com.fibelatti.core.android.base
 
 import androidx.annotation.CallSuper
 import com.fibelatti.core.provider.SchedulerProvider

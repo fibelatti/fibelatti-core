@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform
+package com.fibelatti.core.android
 
 import com.fibelatti.core.BaseJUnit4Test
 import com.fibelatti.core.extension.mock

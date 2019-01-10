@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform
+package com.fibelatti.core.android
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

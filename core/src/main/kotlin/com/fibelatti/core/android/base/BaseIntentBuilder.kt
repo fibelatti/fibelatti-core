@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform.base
+package com.fibelatti.core.android.base
 
 import android.content.Context
 import android.content.Intent

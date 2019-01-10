@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform
+package com.fibelatti.core.android
 
 import android.os.Bundle
 import kotlin.properties.ReadWriteProperty

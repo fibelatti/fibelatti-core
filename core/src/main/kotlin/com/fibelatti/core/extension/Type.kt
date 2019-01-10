@@ -2,9 +2,9 @@ package com.fibelatti.core.extension
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.fibelatti.core.platform.Event
-import com.fibelatti.core.platform.LiveEvent
-import com.fibelatti.core.platform.MutableLiveEvent
+import com.fibelatti.core.android.Event
+import com.fibelatti.core.android.LiveEvent
+import com.fibelatti.core.android.MutableLiveEvent
 
 // region Any
 val Unit?.exhaustive get() = this

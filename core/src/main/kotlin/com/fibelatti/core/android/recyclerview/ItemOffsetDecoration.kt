@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform.recyclerview
+package com.fibelatti.core.android.recyclerview
 
 import android.content.Context
 import android.graphics.Rect

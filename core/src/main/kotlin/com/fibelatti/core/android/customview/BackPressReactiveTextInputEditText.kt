@@ -1,4 +1,4 @@
-package com.fibelatti.core.platform.customview
+package com.fibelatti.core.android.customview
 
 import android.content.Context
 import android.util.AttributeSet
