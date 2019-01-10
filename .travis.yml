@@ -15,7 +15,7 @@ licenses:
     - 'android-sdk-preview-license-.+'
 
 script:
-  - ./gradlew clean assembleRelease lintRelease testReleaseUnitTest -a --stacktrace
+  - ./gradlew clean assemble lint test -a --stacktrace
 
 notifications:
   email: false
