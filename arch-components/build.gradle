@@ -23,7 +23,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
 
         test {
-            java.srcDirs += 'src/test/kotlin'
+            java.srcDirs = ['src/sharedTest/kotlin', 'src/test/kotlin']
         }
     }
 
@@ -35,23 +35,19 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':core')
+
     // Kotlin
     implementation KotlinDependencies.kotlin
 
     // Support Library
-    implementation SupportLibraryDependencies.supportLibrary
-    implementation SupportLibraryDependencies.materialDesign
     implementation SupportLibraryDependencies.supportAnnotations
 
-    // Coroutines
-    implementation CoroutineDependencies.coroutinesCore
-    implementation CoroutineDependencies.coroutinesAndroid
+    // Architecture Components
+    implementation ArchitectureComponentDependencies.archComponents
 
     // DI
     implementation DIDependencies.javaxInject
-
-    // Third Party
-    implementation ThirdPartyDependencies.gson
 
     // Testing
     testRuntimeOnly TestDependencies.junit5Engine

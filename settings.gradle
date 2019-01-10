@@ -1,1 +1,1 @@
-include ':core', ':rx'
+include ':core', ':core-test', ':arch-components', ':arch-components-test', ':rx', ':rx-test'

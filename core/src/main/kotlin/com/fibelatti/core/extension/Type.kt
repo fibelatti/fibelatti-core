@@ -1,17 +1,7 @@
 package com.fibelatti.core.extension
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.fibelatti.core.android.Event
-import com.fibelatti.core.android.LiveEvent
-import com.fibelatti.core.android.MutableLiveEvent
-
 // region Any
 val Unit?.exhaustive get() = this
-
-fun <T> T?.asLiveData(): LiveData<T> = MutableLiveData<T>().apply { value = this@asLiveData }
-
-fun <T> T?.asLiveEvent(): LiveEvent<T> = MutableLiveEvent<T>().apply { value = Event(this@asLiveEvent) }
 
 fun <T> T?.orThrow(exception: Throwable) = this ?: throw exception
 // endregion
@@ -22,9 +12,11 @@ fun Boolean?.orTrue(): Boolean = this ?: true
 // endregion
 // region Int
 fun Int?.orZero(): Int = this ?: 0
+
 // endregion
 // region Long
 fun Long?.orZero(): Long = this ?: 0
+
 // endregion
 // region String
 inline fun String?.ifNotNullOrEmpty(block: (String) -> Unit) {
@@ -49,6 +41,7 @@ fun String.isInt(): Boolean = try {
 } catch (e: Exception) {
     false
 }
+
 // endregion
 // region CharSequence
 fun CharSequence?.orEmpty(): String = this?.toString() ?: ""

@@ -3,17 +3,17 @@ package com.fibelatti.core.extension
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.fibelatti.core.android.Event
-import org.junit.Assert
-import org.mockito.ArgumentMatchers
-import org.mockito.BDDMockito
+import org.junit.Assert.assertEquals
+import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito
+import org.mockito.Mockito.verify
 
 infix fun <T> LiveData<T>.currentValueShouldBe(expectedValue: T) {
     var value: T? = null
     val observer = Observer<T> { value = it }
 
     observeForever(observer)
-    Assert.assertEquals(expectedValue, value)
+    assertEquals(expectedValue, value)
     removeObserver(observer)
 }
 
@@ -24,6 +24,6 @@ infix fun <T> LiveData<Event<T>>.currentEventShouldBe(expectedValue: T) {
 fun <T> LiveData<T>.shouldNeverReceiveValues() {
     val observer = Mockito.spy(Observer<T> {})
     observeForever(observer)
-    BDDMockito.verify(observer, Mockito.never()).onChanged(ArgumentMatchers.any())
+    verify(observer, Mockito.never()).onChanged(any())
     removeObserver(observer)
 }

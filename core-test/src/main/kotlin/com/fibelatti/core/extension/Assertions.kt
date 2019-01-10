@@ -1,11 +1,10 @@
 package com.fibelatti.core.extension
 
-import junit.framework.AssertionFailedError
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 
 fun throwAssertionError() {
-    throw AssertionFailedError("The expected condition was not fulfilled.")
+    throw AssertionError("The expected condition was not fulfilled.")
 }
 
 infix fun Any?.shouldBe(otherValue: Any?) {

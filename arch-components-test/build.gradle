@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
+
+    defaultConfig {
+        versionCode LibInfo.versionCode
+        versionName LibInfo.versionName
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles "$rootProject.rootDir.absolutePath/proguard-rules.pro"
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        abortOnError true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':arch-components')
+
+    // Kotlin
+    implementation KotlinDependencies.kotlin
+
+    // Architecture Components
+    implementation ArchitectureComponentDependencies.archComponents
+
+    // Testing
+    implementation TestDependencies.junit
+    implementation TestDependencies.archComponentsTest
+}

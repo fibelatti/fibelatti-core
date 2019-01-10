@@ -21,10 +21,6 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-
-        test {
-            java.srcDirs += 'src/test/kotlin'
-        }
     }
 
     lintOptions {
@@ -35,13 +31,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':core')
+
     // Kotlin
     implementation KotlinDependencies.kotlin
-
-    // Support Library
-    implementation SupportLibraryDependencies.supportLibrary
-    implementation SupportLibraryDependencies.materialDesign
-    implementation SupportLibraryDependencies.supportAnnotations
 
     // Coroutines
     implementation CoroutineDependencies.coroutinesCore
@@ -50,19 +43,9 @@ dependencies {
     // DI
     implementation DIDependencies.javaxInject
 
-    // Third Party
-    implementation ThirdPartyDependencies.gson
-
     // Testing
-    testRuntimeOnly TestDependencies.junit5Engine
-    testRuntimeOnly TestDependencies.junitVintage
+    implementation TestDependencies.junit
 
-    testCompileOnly TestDependencies.junit
-
-    testImplementation TestDependencies.junit5
-    testImplementation TestDependencies.junit5Params
-    testImplementation TestDependencies.mockitoCore
-    testImplementation TestDependencies.archComponentsTest
-
-    testImplementation project(':core-test')
+    implementation TestDependencies.junit5
+    implementation TestDependencies.mockitoCore
 }
