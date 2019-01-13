@@ -1,6 +1,6 @@
 package com.fibelatti.core.functional
 
-import com.fibelatti.core.BaseJUnit5Test
+import com.fibelatti.core.test.BaseJUnit5Test
 import com.fibelatti.core.test.extension.mock
 import com.fibelatti.core.test.extension.shouldBe
 import com.fibelatti.core.test.extension.throwAssertionError
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.junit.runner.notification.Failure
 import org.mockito.BDDMockito.given
 import org.mockito.BDDMockito.verifyZeroInteractions
 import org.mockito.Mockito.reset
