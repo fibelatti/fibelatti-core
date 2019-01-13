@@ -27,33 +27,15 @@ import androidx.annotation.StyleableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.fibelatti.core.R
 import com.fibelatti.core.android.recyclerview.ItemOffsetDecoration
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 private const val INVALID_RESOURCE_ID = -1
-
-// region User Feedback
-@JvmOverloads
-fun View.snackbar(message: String, duration: Int = Snackbar.LENGTH_SHORT, @DrawableRes snackbarBackground: Int) {
-    Snackbar.make(this, message, duration)
-        .apply {
-            val margin = context.resources.getDimensionPixelSize(R.dimen.margin_regular)
-            view.layoutParams = (view.layoutParams as ViewGroup.MarginLayoutParams).apply {
-                setMargins(margin, margin, margin, margin)
-            }
-            view.background = ContextCompat.getDrawable(context, snackbarBackground)
-        }
-        .show()
-}
-// endregion
 
 // region View
 fun View.gone() {
@@ -257,8 +239,8 @@ fun ImageView.visible(imageUri: Uri) {
 // endregion
 
 // region RecyclerView
-fun RecyclerView.withItemOffsetDecoration(): RecyclerView = apply {
-    addItemDecoration(ItemOffsetDecoration(context, R.dimen.margin_small))
+fun RecyclerView.withItemOffsetDecoration(@DimenRes dimenRes: Int): RecyclerView = apply {
+    addItemDecoration(ItemOffsetDecoration(context, dimenRes))
 }
 
 fun RecyclerView.withGridLayoutManager(spanCount: Int): RecyclerView = apply {

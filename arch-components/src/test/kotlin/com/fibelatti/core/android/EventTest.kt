@@ -1,13 +1,16 @@
 package com.fibelatti.core.android
 
-import com.fibelatti.core.BaseJUnit4Test
-import com.fibelatti.core.extension.mock
-import com.fibelatti.core.extension.shouldBe
+import com.fibelatti.core.archcomponents.Event
+import com.fibelatti.core.archcomponents.EventObserver
+import com.fibelatti.core.archcomponents.MutableLiveEvent
+import com.fibelatti.core.archcomponents.test.BaseLiveDataTest
+import com.fibelatti.core.test.extension.mock
+import com.fibelatti.core.test.extension.shouldBe
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
 
-class EventTest : BaseJUnit4Test() {
+class EventTest : BaseLiveDataTest() {
 
     private val mockValue = true
     private lateinit var event: Event<Boolean>

@@ -1,6 +1,7 @@
 package com.fibelatti.core.extension
 
 import androidx.annotation.NonNull
+import com.fibelatti.core.test.extension.shouldBe
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

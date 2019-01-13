@@ -40,6 +40,10 @@ dependencies {
     // Kotlin
     implementation KotlinDependencies.kotlin
 
+    // Coroutines
+    implementation CoroutineDependencies.coroutinesCore
+    implementation CoroutineDependencies.coroutinesAndroid
+
     // Support Library
     implementation SupportLibraryDependencies.supportLibrary
     implementation SupportLibraryDependencies.materialDesign

@@ -1,6 +1,5 @@
 include(
     ':core', ':core-test',
-    'coroutines', 'coroutines-test',
     ':arch-components', ':arch-components-test',
     ':rx', ':rx-test'
 )

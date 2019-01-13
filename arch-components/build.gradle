@@ -37,7 +37,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':coroutines')
+    api project(':core')
 
     // Kotlin
     implementation KotlinDependencies.kotlin
@@ -62,5 +62,5 @@ dependencies {
     testImplementation TestDependencies.mockitoCore
     testImplementation TestDependencies.archComponentsTest
 
-    testImplementation project(':core-test')
+    testImplementation project(':arch-components-test')
 }

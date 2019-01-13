@@ -1,5 +1,6 @@
 package com.fibelatti.core.extension
 
+import com.fibelatti.core.test.extension.shouldBe
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.jupiter.api.Nested

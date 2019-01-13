@@ -1,7 +1,7 @@
 package com.fibelatti.core.android.base
 
 import androidx.annotation.CallSuper
-import com.fibelatti.core.provider.SchedulerProvider
+import com.fibelatti.core.rx.provider.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
