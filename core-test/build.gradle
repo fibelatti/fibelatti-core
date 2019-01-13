@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -11,22 +10,11 @@ android {
         versionName LibInfo.versionName
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
+        consumerProguardFiles "$rootProject.rootDir.absolutePath/proguard-rules.pro"
     }
-
-    buildTypes {
-        release {
-            consumerProguardFiles "$rootProject.rootDir.absolutePath/proguard-rules.pro"
-        }
-    }
-
-    defaultPublishConfig "release"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-    }
-
-    lintOptions {
-        abortOnError true
     }
 }
 

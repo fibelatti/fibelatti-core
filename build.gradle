@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 apply from: 'ktlint.gradle'
 apply from: 'detekt.gradle'
 
@@ -35,7 +37,7 @@ gradle.projectsEvaluated {
     subprojects {
         preBuild.dependsOn buildChecks
 
-        tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        tasks.withType(KotlinCompile).all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
