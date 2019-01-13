@@ -18,9 +18,5 @@ jobs:
           command: ./gradlew androidDependencies
 
       - run:
-          name: Set permissions
-          command: find ./ -type d -exec chmod 755 {} \;
-
-      - run:
           name: Gradle build
-          command: ./gradlew clean assemble lint test -a
+          command: ./gradlew clean assemble test
