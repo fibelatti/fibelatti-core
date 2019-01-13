@@ -2,6 +2,7 @@
 
 [![Language](https://img.shields.io/badge/language-kotlin-brightgreen.svg)](https://www.github.com/fibelatti/fibelatti-core)
 [![Build Status](https://api.travis-ci.org/fibelatti/fibelatti-core.svg?branch=master)](https://travis-ci.org/fibelatti/fibelatti-core)
+[![CircleCI](https://circleci.com/gh/fibelatti/fibelatti-core/tree/master.svg?style=svg)](https://circleci.com/gh/fibelatti/fibelatti-core/tree/master)
 
 Commonly used classes and extensions functions. Used to build Android projects in Kotlin with:
 
