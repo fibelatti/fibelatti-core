@@ -7,6 +7,9 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.LinkMovementMethod
+import android.text.method.TransformationMethod
+import android.text.util.Linkify
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -166,6 +169,12 @@ fun TextView.setDrawables(
         drawableTopRes?.let { AppCompatResources.getDrawable(context, it) },
         drawableRightRes?.let { AppCompatResources.getDrawable(context, it) },
         drawableBottomRes?.let { AppCompatResources.getDrawable(context, it) })
+}
+
+fun TextView.setupLinks(transformationMethod: TransformationMethod? = null) {
+    Linkify.addLinks(this, Linkify.ALL)
+    movementMethod = LinkMovementMethod.getInstance()
+    transformationMethod?.let(::setTransformationMethod)
 }
 // endregion
 
