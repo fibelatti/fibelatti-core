@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.fibelatti.core.archcomponents.Event
 import com.fibelatti.core.archcomponents.EventObserver
 
-fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, body: (T) -> Unit) =
+inline fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, crossinline body: (T) -> Unit) =
     liveData.observe(this, Observer { it?.let(body) })
 
 fun <T : Any, L : LiveData<Event<T>>> LifecycleOwner.observeEvent(liveData: L, body: (T) -> Unit) =

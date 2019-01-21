@@ -78,7 +78,7 @@ fun <R> Result<R>.getOrThrow(): R = when (this) {
     is Failure -> throw this.error
 }
 
-fun <R> Result<R>.getOrElse(onFailure: (exception: Throwable) -> R): R = when (this) {
+inline fun <R> Result<R>.getOrElse(onFailure: (exception: Throwable) -> R): R = when (this) {
     is Success -> this.value
     is Failure -> onFailure(this.error)
 }
@@ -88,12 +88,12 @@ fun <R> Result<R>.getOrDefault(defaultValue: R): R = when (this) {
     is Failure -> defaultValue
 }
 
-fun <R> Result<R>.fold(onSuccess: (R) -> R, onFailure: (Throwable) -> R): R = when (this) {
+inline fun <R> Result<R>.fold(onSuccess: (R) -> R, onFailure: (Throwable) -> R): R = when (this) {
     is Success -> onSuccess(this.value)
     is Failure -> onFailure(this.error)
 }
 
-fun <T, R> Result<R>.mapCatching(fn: (R) -> T): Result<T> = when (this) {
+inline fun <T, R> Result<R>.mapCatching(fn: (R) -> T): Result<T> = when (this) {
     is Success -> catching { fn(this.value) }
     is Failure -> this
 }

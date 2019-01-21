@@ -1,20 +1,20 @@
 package com.fibelatti.core.extension
 
 // region Null checks with smart cast for multiple parameters (a multi-let)
-fun <T1 : Any, T2 : Any, R : Any> safeLet(
+inline fun <T1 : Any, T2 : Any, R : Any> safeLet(
     p1: T1?,
     p2: T2?,
     block: (T1, T2) -> R?
 ): R? = if (p1 != null && p2 != null) block(p1, p2) else null
 
-fun <T1 : Any, T2 : Any, T3 : Any, R : Any> safeLet(
+inline fun <T1 : Any, T2 : Any, T3 : Any, R : Any> safeLet(
     p1: T1?,
     p2: T2?,
     p3: T3?,
     block: (T1, T2, T3) -> R?
 ): R? = if (p1 != null && p2 != null && p3 != null) block(p1, p2, p3) else null
 
-fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, R : Any> safeLet(
+inline fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, R : Any> safeLet(
     p1: T1?,
     p2: T2?,
     p3: T3?,
@@ -22,7 +22,7 @@ fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, R : Any> safeLet(
     block: (T1, T2, T3, T4) -> R?
 ): R? = if (p1 != null && p2 != null && p3 != null && p4 != null) block(p1, p2, p3, p4) else null
 
-fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, T5 : Any, R : Any> safeLet(
+inline fun <T1 : Any, T2 : Any, T3 : Any, T4 : Any, T5 : Any, R : Any> safeLet(
     p1: T1?,
     p2: T2?,
     p3: T3?,
