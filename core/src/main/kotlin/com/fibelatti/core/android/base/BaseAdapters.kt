@@ -11,10 +11,10 @@ abstract class BaseAdapter<T>(
     private val hasFilter: Boolean = false
 ) : RecyclerView.Adapter<BaseAdapter<T>.ViewHolder>() {
 
-    private val items: MutableList<T> by lazy { mutableListOf<T>() }
+    private val allItems: MutableList<T> by lazy { mutableListOf<T>() }
     private val filteredItems: MutableList<T> by lazy { mutableListOf<T>() }
 
-    private val collection: MutableList<T> get() = if (hasFilter) filteredItems else items
+    private val collection: MutableList<T> get() = if (hasFilter) filteredItems else allItems
 
     override fun getItemCount(): Int = collection.size
 
@@ -24,9 +24,11 @@ abstract class BaseAdapter<T>(
         holder.bind(collection[position])
     }
 
+    fun getItems(): List<T> = collection
+
     fun addAll(listItems: List<T>) {
-        items.clear()
-        items.addAll(listItems)
+        allItems.clear()
+        allItems.addAll(listItems)
 
         if (hasFilter) {
             filteredItems.clear()
@@ -39,9 +41,9 @@ abstract class BaseAdapter<T>(
     fun filter(query: String) {
         filteredItems.clear()
         if (query.isBlank()) {
-            filteredItems.addAll(items)
+            filteredItems.addAll(allItems)
         } else {
-            filteredItems.addAll(items.filter { filterCriteria(query, it) })
+            filteredItems.addAll(allItems.filter { filterCriteria(query, it) })
             if (filteredItems.isEmpty()) onEmptyFilterResult()
         }
 
@@ -70,10 +72,10 @@ abstract class BaseAdapterWithDelegates(
 
     protected val delegateAdapters by lazy { SparseArrayCompat<BaseDelegateAdapter>() }
 
-    protected val items: MutableList<BaseViewType> by lazy { mutableListOf<BaseViewType>() }
+    protected val allItems: MutableList<BaseViewType> by lazy { mutableListOf<BaseViewType>() }
     protected val filteredItems: MutableList<BaseViewType> by lazy { mutableListOf<BaseViewType>() }
 
-    private val collection: MutableList<BaseViewType> get() = if (hasFilter) filteredItems else items
+    private val collection: MutableList<BaseViewType> get() = if (hasFilter) filteredItems else allItems
 
     override fun getItemCount() = collection.size
 
@@ -87,9 +89,11 @@ abstract class BaseAdapterWithDelegates(
 
     override fun getItemViewType(position: Int): Int = collection[position].getViewType()
 
+    fun getItems(): List<BaseViewType> = collection
+
     fun addAll(listItems: List<BaseViewType>) {
-        items.clear()
-        items.addAll(listItems)
+        allItems.clear()
+        allItems.addAll(listItems)
 
         if (hasFilter) {
             filteredItems.clear()
@@ -100,7 +104,7 @@ abstract class BaseAdapterWithDelegates(
     }
 
     fun clearItems() {
-        items.clear()
+        allItems.clear()
         filteredItems.clear()
         notifyDataSetChanged()
     }
@@ -108,9 +112,9 @@ abstract class BaseAdapterWithDelegates(
     fun filter(query: String) {
         filteredItems.clear()
         if (query.isBlank()) {
-            filteredItems.addAll(items)
+            filteredItems.addAll(allItems)
         } else {
-            filteredItems.addAll(items.filter { filterCriteria(query, it) })
+            filteredItems.addAll(allItems.filter { filterCriteria(query, it) })
             if (filteredItems.isEmpty()) onEmptyFilterResult()
         }
 
