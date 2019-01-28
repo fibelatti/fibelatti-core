@@ -93,7 +93,12 @@ inline fun <R> Result<R>.fold(onSuccess: (R) -> R, onFailure: (Throwable) -> R):
     is Failure -> onFailure(this.error)
 }
 
-inline fun <T, R> Result<R>.mapCatching(fn: (R) -> T): Result<T> = when (this) {
+inline fun <T, R> Result<T>.map(onSuccess: (T) -> Result<R>): Result<R> = when (this) {
+    is Success -> onSuccess(this.value)
+    is Failure -> this
+}
+
+inline fun <T, R> Result<T>.mapCatching(fn: (T) -> R): Result<R> = when (this) {
     is Success -> catching { fn(this.value) }
     is Failure -> this
 }

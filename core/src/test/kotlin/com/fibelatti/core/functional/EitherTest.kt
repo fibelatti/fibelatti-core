@@ -24,6 +24,7 @@ class EitherTest : BaseJUnit5Test() {
     private val left: Either<Throwable, Boolean> = Either.left(mockError)
 
     private val mockFnR = spy({ _: Boolean -> Unit })
+    private val mockFnResultR = spy({ _: Boolean -> Success(Unit) })
     private val mockFnL = spy({ _: Throwable -> Unit })
 
     private val success = Success(mockValue)
@@ -178,6 +179,15 @@ class EitherTest : BaseJUnit5Test() {
         }
 
         @Test
+        fun `GIVEN Result is Success WHEN map is called THEN function is invoked`() {
+            // WHEN
+            success.map(mockFnResultR)
+
+            // THEN
+            verify(mockFnResultR).invoke(mockValue)
+        }
+
+        @Test
         fun `GIVEN Result is Success WHEN mapCatching is called THEN function is invoked`() {
             // WHEN
             success.mapCatching(mockFnR)
@@ -260,6 +270,16 @@ class EitherTest : BaseJUnit5Test() {
 
             // THEN
             verifyZeroInteractions(mockFnR)
+        }
+
+        @Test
+        fun `GIVEN Result is Failure WHEN map is called THEN error is returned`() {
+            // WHEN
+            val result = failure.map(mockFnResultR)
+
+            // THEN
+            result shouldBe failure
+            verifyZeroInteractions(mockFnResultR)
         }
 
         @Test
