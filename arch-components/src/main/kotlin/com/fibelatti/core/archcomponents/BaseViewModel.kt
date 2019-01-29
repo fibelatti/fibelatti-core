@@ -3,18 +3,23 @@ package com.fibelatti.core.archcomponents
 import androidx.annotation.CallSuper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.fibelatti.core.provider.CoroutineLauncher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel(
-    coroutineLauncher: CoroutineLauncher
-) : ViewModel(), CoroutineLauncher by coroutineLauncher {
+abstract class BaseViewModel : ViewModel(), CoroutineScope {
+
+    private val parentJob by lazy { Job() }
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + parentJob
 
     val error by lazy { MutableLiveData<Throwable>() }
 
     @CallSuper
     override fun onCleared() {
         super.onCleared()
-        cancelAllJobs()
+        parentJob.cancel()
     }
 
     protected fun handleError(error: Throwable) {

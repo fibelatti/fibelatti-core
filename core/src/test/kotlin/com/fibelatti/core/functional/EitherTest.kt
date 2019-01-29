@@ -1,6 +1,5 @@
 package com.fibelatti.core.functional
 
-import com.fibelatti.core.test.BaseJUnit5Test
 import com.fibelatti.core.test.extension.mock
 import com.fibelatti.core.test.extension.shouldBe
 import com.fibelatti.core.test.extension.throwAssertionError
@@ -14,7 +13,7 @@ import org.mockito.Mockito.reset
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verify
 
-class EitherTest : BaseJUnit5Test() {
+class EitherTest {
 
     private val mockValue = true
     private val mockDefaultValue = false
