@@ -36,7 +36,7 @@ class LibraryTest {
 
             // THEN
             assertThrows<JsonDataException> {
-                val result: SampleObject? = moshi.fromJson(invalidInput)
+                moshi.fromJson<SampleObject>(invalidInput)
             }
         }
     }
