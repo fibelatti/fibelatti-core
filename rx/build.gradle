@@ -1,14 +1,14 @@
 dependencies {
     // Kotlin
-    implementation KotlinDependencies.kotlin
+    implementation Dependencies.kotlin
 
     // Support Library
-    implementation SupportLibraryDependencies.supportAnnotations
+    implementation Dependencies.supportAnnotations
 
     // Rx
-    implementation RxDependencies.rxJava
-    implementation RxDependencies.rxAndroid
+    implementation Dependencies.rxJava
+    implementation Dependencies.rxAndroid
 
     // DI
-    implementation DIDependencies.javaxInject
+    implementation Dependencies.javaxInject
 }

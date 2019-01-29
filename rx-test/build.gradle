@@ -2,11 +2,11 @@ dependencies {
     implementation project(':rx')
 
     // Kotlin
-    implementation KotlinDependencies.kotlin
+    implementation Dependencies.kotlin
 
     // Rx
-    implementation RxDependencies.rxJava
-    implementation RxDependencies.rxAndroid
+    implementation Dependencies.rxJava
+    implementation Dependencies.rxAndroid
 
     // Testing
     implementation TestDependencies.junit5

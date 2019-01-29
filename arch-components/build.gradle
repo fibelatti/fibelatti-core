@@ -2,16 +2,20 @@ dependencies {
     api project(':core')
 
     // Kotlin
-    implementation KotlinDependencies.kotlin
+    implementation Dependencies.kotlin
+
+    // Coroutines
+    implementation Dependencies.coroutinesCore
+    implementation Dependencies.coroutinesAndroid
 
     // Support Library
-    implementation SupportLibraryDependencies.supportAnnotations
+    implementation Dependencies.supportAnnotations
 
     // Architecture Components
-    implementation ArchitectureComponentDependencies.archComponents
+    implementation Dependencies.archComponents
 
     // DI
-    implementation DIDependencies.javaxInject
+    implementation Dependencies.javaxInject
 
     // Testing
     testRuntimeOnly TestDependencies.junit5Engine

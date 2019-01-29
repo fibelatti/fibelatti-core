@@ -3,12 +3,13 @@ dependencies {
     api project(':core-test')
 
     // Kotlin
-    implementation KotlinDependencies.kotlin
+    implementation Dependencies.kotlin
 
     // Architecture Components
-    implementation ArchitectureComponentDependencies.archComponents
+    implementation Dependencies.archComponents
 
     // Testing
     implementation TestDependencies.junit
+    implementation TestDependencies.junit5
     implementation TestDependencies.archComponentsTest
 }

@@ -2,18 +2,17 @@ dependencies {
     implementation project(':core')
 
     // Kotlin
-    implementation KotlinDependencies.kotlin
+    implementation Dependencies.kotlin
 
     // Coroutines
-    implementation CoroutineDependencies.coroutinesCore
-    implementation CoroutineDependencies.coroutinesAndroid
+    implementation Dependencies.coroutinesCore
+    implementation Dependencies.coroutinesAndroid
 
     // DI
-    implementation DIDependencies.javaxInject
+    implementation Dependencies.javaxInject
 
     // Testing
     implementation TestDependencies.junit
-
     implementation TestDependencies.junit5
     implementation TestDependencies.mockitoCore
 }
