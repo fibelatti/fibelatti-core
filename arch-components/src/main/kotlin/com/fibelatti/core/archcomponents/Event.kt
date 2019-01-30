@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
  * Wrapper class for data that is posted to [MutableLiveData] but should be observed only once.
  * This is specially useful when the lifecycle owner of a ViewModel is an Activity.
  *
- * @param <T> The type of data hold by this instance
+ * @param [T] The type of data hold by this instance
  */
 data class Event<out T>(private val content: T?) {
 
@@ -29,21 +29,21 @@ data class Event<out T>(private val content: T?) {
 /**
  * Alias to simplify declarations of [LiveData] with type [Event] of <T>.
  *
- * @param <T> The type of data hold by this instance
+ * @param [T] The type of data hold by this instance
  */
 typealias LiveEvent<T> = LiveData<Event<T>>
 
 /**
  * Alias to simplify declarations of [MutableLiveData] with type [Event] of <T>.
  *
- * @param <T> The type of data hold by this instance
+ * @param [T] The type of data hold by this instance
  */
 typealias MutableLiveEvent<T> = MutableLiveData<Event<T>>
 
 /**
- * Wraps [value] in an [Event] instance before calling [MutableLiveData.setValue]
+ * Wraps [value] in an [Event] instance before calling [MutableLiveData.setValue].
  *
- * @param <T> The type of data hold by this instance
+ * @param [T] The type of data hold by this instance
  */
 fun <T> MutableLiveEvent<T>.setEvent(value: T?) = setValue(
     Event(
@@ -52,9 +52,9 @@ fun <T> MutableLiveEvent<T>.setEvent(value: T?) = setValue(
 )
 
 /**
- * Wraps [value] in an [Event] instance before calling [MutableLiveData.postValue]
+ * Wraps [value] in an [Event] instance before calling [MutableLiveData.postValue].
  *
- * @param <T> The type of data hold by this instance
+ * @param [T] The type of data hold by this instance
  */
 fun <T> MutableLiveEvent<T>.postEvent(value: T?) = postValue(
     Event(
@@ -68,7 +68,7 @@ fun <T> MutableLiveEvent<T>.postEvent(value: T?) = postValue(
  *
  * [onEvent] is *only* called if the [Event.alreadyObserved] is false.
  *
- * @param <T> The type of data hold by this instance
+ * @param [T] The type of data hold by this instance
  */
 class EventObserver<T>(private val onEvent: (T) -> Unit) : Observer<Event<T>?> {
     override fun onChanged(event: Event<T>?) {

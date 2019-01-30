@@ -51,7 +51,7 @@ fun View.gone() {
 /**
  * Set `this` visibility to [View.GONE] if the [predicate] is true.
  *
- * @param predicate whether the visibility will change.
+ * @param predicate whether the visibility will change
  */
 fun View.goneIf(predicate: Boolean) {
     if (predicate) visibility = View.GONE
@@ -61,7 +61,7 @@ fun View.goneIf(predicate: Boolean) {
  * Set `this` visibility to [View.GONE] if the [predicate] is true,
  * to [otherwiseVisibility] if false.
  *
- * @param predicate whether the visibility will change.
+ * @param predicate whether the visibility will change
  * @param otherwiseVisibility value to be set if [predicate] is false, should be either
  * [View.VISIBLE] or [View.INVISIBLE]
  */
@@ -75,7 +75,7 @@ fun View.goneIf(predicate: Boolean, otherwiseVisibility: Int) {
 fun View.isGone(): Boolean = visibility == View.GONE
 
 /**
- * Set `this` visibility to [View.INVISIBLE].
+ * Set `this` visibility to [View.INVISIBLE]
  */
 fun View.invisible() {
     visibility = View.INVISIBLE
@@ -84,7 +84,7 @@ fun View.invisible() {
 /**
  * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true.
  *
- * @param predicate whether the visibility will change.
+ * @param predicate whether the visibility will change
  */
 fun View.invisibleIf(predicate: Boolean) {
     if (predicate) visibility = View.INVISIBLE
@@ -94,7 +94,7 @@ fun View.invisibleIf(predicate: Boolean) {
  * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true,
  * to [otherwiseVisibility] if false.
  *
- * @param predicate whether the visibility will change.
+ * @param predicate whether the visibility will change
  * @param otherwiseVisibility value to be set if [predicate] is false, should be either
  * [View.VISIBLE] or [View.GONE]
  */
@@ -103,7 +103,7 @@ fun View.invisibleIf(predicate: Boolean, otherwiseVisibility: Int) {
 }
 
 /**
- * @return true if `this` visibility is [View.INVISIBLE], false otherwise.
+ * @return true if `this` visibility is [View.INVISIBLE], false otherwise
  */
 fun View.isInvisible(): Boolean = visibility == View.INVISIBLE
 
@@ -117,7 +117,7 @@ fun View.visible() {
 /**
  * Set `this` visibility to [View.VISIBLE] if the [predicate] is true.
  *
- * @param predicate whether the visibility will change.
+ * @param predicate whether the visibility will change
  */
 fun View.visibleIf(predicate: Boolean) {
     if (predicate) visibility = View.VISIBLE
@@ -127,7 +127,7 @@ fun View.visibleIf(predicate: Boolean) {
  * Set `this` visibility to [View.VISIBLE] if the [predicate] is true,
  * to [otherwiseVisibility] if false.
  *
- * @param predicate whether the visibility will change.
+ * @param predicate whether the visibility will change
  * @param otherwiseVisibility value to be set if [predicate] is false, should be either
  * [View.INVISIBLE] or [View.GONE]
  */
@@ -136,7 +136,7 @@ fun View.visibleIf(predicate: Boolean, otherwiseVisibility: Int) {
 }
 
 /**
- * @return true if `this` visibility is [View.VISIBLE], false otherwise.
+ * @return true if `this` visibility is [View.VISIBLE], false otherwise
  */
 fun View.isVisible(): Boolean = visibility == View.VISIBLE
 
@@ -151,7 +151,7 @@ fun View.heightCollapse() {
 }
 
 /**
- * @return true if `this` height is 0, false otherwise.
+ * @return true if `this` height is 0, false otherwise
  */
 fun View.heightIsCollapsed(): Boolean = layoutParams.height == 0
 
@@ -205,14 +205,14 @@ fun View.setPadding(
  * as the inflated view root.
  *
  * @param layoutResource [LayoutRes] of the layout to be inflated
- * @param attachToRoot if the view should be attached to root or not. Default is false.
+ * @param attachToRoot if the view should be attached to root or not, default is false
  */
 @JvmOverloads
 fun ViewGroup.inflate(@LayoutRes layoutResource: Int, attachToRoot: Boolean = false): View =
     LayoutInflater.from(context).inflate(layoutResource, this, attachToRoot)
 
 /**
- * @return `this` children as an [Iterable] of [View].
+ * @return `this` children as an [Iterable] of [View]
  */
 val ViewGroup.children: Iterable<View> get() = (0 until childCount).map(::getChildAt)
 
@@ -252,7 +252,7 @@ fun ViewGroup.animateChangingTransitions() {
 /**
  * Set `this` text to [textId] and `this` visibility to [View.VISIBLE].
  *
- * @param textId [StringRes] to be set.
+ * @param textId [StringRes] to be set
  */
 fun TextView.visible(@StringRes textId: Int) {
     visible()
@@ -294,10 +294,22 @@ fun TextView.visibleIf(predicate: Boolean, text: String, otherwiseVisibility: In
     if (predicate) this.text = text
 }
 
+/**
+ * Shorthand extension to make `this` clickable and focusable, while updating its text and click listener.
+ *
+ * @param textId the new text [StringRes]
+ * @param clickListener function to be invoked on click
+ */
 fun TextView.setOnClickListener(@StringRes textId: Int, clickListener: () -> Unit) {
     setOnClickListener(context.getString(textId), clickListener)
 }
 
+/**
+ * Shorthand extension to make `this` clickable and focusable, while updating its text and click listener.
+ *
+ * @param text the new text value
+ * @param clickListener function to be invoked on click
+ */
 fun TextView.setOnClickListener(text: String, clickListener: () -> Unit) {
     isClickable = true
     isFocusable = true
@@ -312,6 +324,14 @@ fun TextView.clearDrawables() {
     setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
 }
 
+/**
+ * Shorthand function to set compound drawables in a [TextView].
+ *
+ * @param drawableLeftRes the [DrawableRes] id to be set as a left drawable
+ * @param drawableTopRes the [DrawableRes] id to be set as a top drawable
+ * @param drawableRightRes the [DrawableRes] id to be set as a right drawable
+ * @param drawableBottomRes the [DrawableRes] id to be set as a bottom drawable
+ */
 fun TextView.setDrawables(
     @DrawableRes drawableLeftRes: Int? = null,
     @DrawableRes drawableTopRes: Int? = null,
@@ -325,6 +345,12 @@ fun TextView.setDrawables(
         drawableBottomRes?.let { AppCompatResources.getDrawable(context, it) })
 }
 
+/**
+ * Shorthand function to linkify all urls in `this`, setting the movement method to [LinkMovementMethod] and the
+ * transformation method to [transformationMethod].
+ *
+ * @param [transformationMethod] an optional [TransformationMethod] to be set as `this` transformationMethod
+ */
 fun TextView.setupLinks(transformationMethod: TransformationMethod? = null) {
     Linkify.addLinks(this, Linkify.ALL)
     movementMethod = LinkMovementMethod.getInstance()
@@ -340,6 +366,9 @@ fun EditText.clearText() {
     setText("")
 }
 
+/**
+ * Shorthand function to set text listeners to an [EditText].
+ */
 inline fun EditText.addTextChangedListener(
     crossinline beforeTextChanged: (charSequence: CharSequence, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
     crossinline onTextChanged: (charSequence: CharSequence, start: Int, before: Int, count: Int) -> Unit = { _, _, _, _ -> },
@@ -362,6 +391,11 @@ inline fun EditText.addTextChangedListener(
 // endregion
 
 // region TextInputLayout
+/**
+ * Shorthand function to display an error message in a [TextInputLayout].
+ *
+ * @param errorMessage the message to be displayed
+ */
 fun TextInputLayout.showError(errorMessage: String) {
     error = errorMessage
     if (childCount == 1 && (getChildAt(0) is TextInputEditText || getChildAt(0) is EditText)) {
@@ -370,7 +404,7 @@ fun TextInputLayout.showError(errorMessage: String) {
 }
 
 /**
- * Sets `this` error to null.
+ * Shorthand function to reset the error state of a [TextInputLayout].
  */
 fun TextInputLayout.clearError() {
     error = null
@@ -379,10 +413,15 @@ fun TextInputLayout.clearError() {
 
 // region EditText
 /**
- * @return `this` text as string, or an empty string if text was null.
+ * @return `this` text as string, or an empty string if text was null
  */
 fun EditText.textAsString(): String = this.text?.toString().orEmpty()
 
+/**
+ * Shorthand function to listen of text changes in an [EditText].
+ *
+ * @param afterTextChanged function to be invoked afterTextChanged, with the new text as its parameter
+ */
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -399,11 +438,21 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
 // endregion
 
 // region ImageView
+/**
+ * Shorthand function to set a [DrawableRes] to an [ImageView] while also making it visible.
+ *
+ * @param imageRes [DrawableRes] resource to be set
+ */
 fun ImageView.visible(@DrawableRes imageRes: Int) {
     visible()
     setImageResource(imageRes)
 }
 
+/**
+ * Shorthand function to set a [Uri] to an [ImageView] while also making it visible.
+ *
+ * @param imageUri [Uri] to be set
+ */
 fun ImageView.visible(imageUri: Uri) {
     visible()
     setImageURI(imageUri)
@@ -411,14 +460,36 @@ fun ImageView.visible(imageUri: Uri) {
 // endregion
 
 // region RecyclerView
+/**
+ * Calls [RecyclerView.addItemDecoration] with [ItemOffsetDecoration] as a parameter.
+ *
+ * @param dimenRes [DimenRes] of the desired offset
+ *
+ * @return `this`
+ */
 fun RecyclerView.withItemOffsetDecoration(@DimenRes dimenRes: Int): RecyclerView = apply {
     addItemDecoration(ItemOffsetDecoration(context, dimenRes))
 }
 
+/**
+ * Set a [GridLayoutManager] as `this` layoutManager.
+ *
+ * @param spanCount number of grid columns
+ *
+ * @return `this`
+ */
 fun RecyclerView.withGridLayoutManager(spanCount: Int): RecyclerView = apply {
     layoutManager = GridLayoutManager(context, spanCount)
 }
 
+/**
+ * Set a [LinearLayoutManager] as `this` layoutManager.
+ *
+ * @param vertical whether `this` layout should be vertical, default is true
+ * @param reversed whether `this` layout should be reverted, default is false
+ *
+ * @return `this`
+ */
 fun RecyclerView.withLinearLayoutManager(
     vertical: Boolean = true,
     reversed: Boolean = false
@@ -427,6 +498,11 @@ fun RecyclerView.withLinearLayoutManager(
         LinearLayoutManager(context, if (vertical) RecyclerView.VERTICAL else RecyclerView.HORIZONTAL, reversed)
 }
 
+/**
+ * Creates a [PagerSnapHelper] and attaches to `this`.
+ *
+ * @return `this`
+ */
 fun RecyclerView.withPagerSnapHelper(): RecyclerView = apply {
     PagerSnapHelper().attachToRecyclerView(this)
 }
@@ -460,6 +536,14 @@ fun AppCompatActivity.onSupportNavigateUpGoBack(): Boolean {
 // endregion
 
 // region Keyboard
+/**
+ * Shorthand function to check if given editor action is equivalent to "submitting a form", that is:
+ *   - [actionId] is either [EditorInfo.IME_ACTION_GO] or [EditorInfo.IME_ACTION_DONE]
+ *   - [event] is not null and [KeyEvent.getAction] is equal to [KeyEvent.ACTION_UP] and [KeyEvent.getKeyCode] is
+ *     equal to [KeyEvent.KEYCODE_ENTER]
+ *
+ * @return true if all the conditions are met, false otherwise
+ */
 fun isKeyboardSubmit(actionId: Int, event: KeyEvent?): Boolean =
     actionId == EditorInfo.IME_ACTION_GO ||
         actionId == EditorInfo.IME_ACTION_DONE ||
@@ -476,9 +560,22 @@ fun View.hideKeyboard() {
 // endregion
 
 // region Resources
+/**
+ * Checks if a given [resourceId] is valid.
+ *
+ * @return true if [resourceId] is valid, false otherwise
+ */
 fun TypedArray.isResourceIdInvalid(resourceId: Int): Boolean =
     getResourceId(resourceId, INVALID_RESOURCE_ID) == INVALID_RESOURCE_ID
 
+/**
+ * Returns a Drawable obtained from the resource id.
+ *
+ * @param context context to inflate against
+ * @param id [StyleableRes] id of the resource to be inflated
+ *
+ * @return the inflated [Drawable] if the [id] was valid and the inflation successful, null otherwise
+ */
 fun TypedArray.resolveResource(context: Context, @StyleableRes id: Int): Drawable? =
     try {
         getResourceId(id, INVALID_RESOURCE_ID).takeIf { it != INVALID_RESOURCE_ID }

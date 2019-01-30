@@ -2,6 +2,9 @@ package com.fibelatti.core.test
 
 import android.content.SharedPreferences
 
+/**
+ * Handy class to test interactions with [SharedPreferences].
+ */
 open class MockSharedPreferencesEditor : SharedPreferences.Editor {
     override fun putLong(key: String?, value: Long): SharedPreferences.Editor = this
 
