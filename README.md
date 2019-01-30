@@ -1,29 +1,28 @@
-# fibelatti-core
+fibelatti-core
+=====
 
 [![Language](https://img.shields.io/badge/language-kotlin-brightgreen.svg)](https://www.github.com/fibelatti/fibelatti-core)
-[![Build Status](https://api.travis-ci.org/fibelatti/fibelatti-core.svg?branch=master)](https://travis-ci.org/fibelatti/fibelatti-core)
 [![CircleCI](https://circleci.com/gh/fibelatti/fibelatti-core/tree/master.svg?style=svg)](https://circleci.com/gh/fibelatti/fibelatti-core/tree/master)
 
-Commonly used classes and extensions functions. Used to build Android projects in Kotlin with:
+A collection of base classes and extension functions used to build a modern Android project in Kotlin.
 
-- MVVM (Architecture components)
-- MVP
-- Coroutines
-- RxJava + RxAndroid
+- MVVM (using Architecture components) or MVP
+- Coroutines or RxJava + RxAndroid
 
-## Built on top of:
+Built on top of
+--------
 
 ```groovy
-"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.11"
+"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.20"
 
-"androidx.appcompat:appcompat:1.0.2"
-"com.google.android.material:material:1.0.0"
+"androidx.appcompat:appcompat:1.1.0-alpha01"
+"com.google.android.material:material:1.1.1-alpha02"
 
 "androidx.lifecycle:lifecycle-extensions:2.0.0"
 "androidx.lifecycle:lifecycle-compiler:2.0.0"
 
-"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
-"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0"
+"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
+"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
 
 "io.reactivex.rxjava2:rxjava:2.2.4"
 "io.reactivex.rxjava2:rxandroid:2.1.0"
@@ -33,7 +32,21 @@ Commonly used classes and extensions functions. Used to build Android projects i
 "com.squareup.moshi:moshi-kotlin:1.8.0"
 ```
 
-## License
+Download
+--------
+
+```groovy
+dependencies {
+    implementation 'com.fibelatti.core:core:1.0.0'
+    implementation 'com.fibelatti.core:archcomponents:1.0.0'
+
+    testImplementation 'com.fibelatti.core:core-test:1.0.0'
+    testImplementation 'com.fibelatti.core:archcomponents-test:1.0.0'
+}
+```
+
+License
+--------
 
     Copyright 2018 Filipe Belatti
 
