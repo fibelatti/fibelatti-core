@@ -50,6 +50,8 @@ fun View.gone() {
 
 /**
  * Set `this` visibility to [View.GONE] if the [predicate] is true.
+ *
+ * @param predicate whether the visibility will change.
  */
 fun View.goneIf(predicate: Boolean) {
     if (predicate) visibility = View.GONE
@@ -58,6 +60,10 @@ fun View.goneIf(predicate: Boolean) {
 /**
  * Set `this` visibility to [View.GONE] if the [predicate] is true,
  * to [otherwiseVisibility] if false.
+ *
+ * @param predicate whether the visibility will change.
+ * @param otherwiseVisibility value to be set if [predicate] is false, should be either
+ * [View.VISIBLE] or [View.INVISIBLE]
  */
 fun View.goneIf(predicate: Boolean, otherwiseVisibility: Int) {
     visibility = if (predicate) View.GONE else otherwiseVisibility
@@ -77,6 +83,8 @@ fun View.invisible() {
 
 /**
  * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true.
+ *
+ * @param predicate whether the visibility will change.
  */
 fun View.invisibleIf(predicate: Boolean) {
     if (predicate) visibility = View.INVISIBLE
@@ -85,6 +93,10 @@ fun View.invisibleIf(predicate: Boolean) {
 /**
  * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true,
  * to [otherwiseVisibility] if false.
+ *
+ * @param predicate whether the visibility will change.
+ * @param otherwiseVisibility value to be set if [predicate] is false, should be either
+ * [View.VISIBLE] or [View.GONE]
  */
 fun View.invisibleIf(predicate: Boolean, otherwiseVisibility: Int) {
     visibility = if (predicate) View.INVISIBLE else otherwiseVisibility
@@ -104,6 +116,8 @@ fun View.visible() {
 
 /**
  * Set `this` visibility to [View.VISIBLE] if the [predicate] is true.
+ *
+ * @param predicate whether the visibility will change.
  */
 fun View.visibleIf(predicate: Boolean) {
     if (predicate) visibility = View.VISIBLE
@@ -112,6 +126,10 @@ fun View.visibleIf(predicate: Boolean) {
 /**
  * Set `this` visibility to [View.VISIBLE] if the [predicate] is true,
  * to [otherwiseVisibility] if false.
+ *
+ * @param predicate whether the visibility will change.
+ * @param otherwiseVisibility value to be set if [predicate] is false, should be either
+ * [View.INVISIBLE] or [View.GONE]
  */
 fun View.visibleIf(predicate: Boolean, otherwiseVisibility: Int) {
     visibility = if (predicate) View.VISIBLE else otherwiseVisibility
@@ -122,6 +140,9 @@ fun View.visibleIf(predicate: Boolean, otherwiseVisibility: Int) {
  */
 fun View.isVisible(): Boolean = visibility == View.VISIBLE
 
+/**
+ * Set `this` height to 0.
+ */
 fun View.heightCollapse() {
     val params = layoutParams
     params.height = 0
@@ -129,8 +150,15 @@ fun View.heightCollapse() {
     requestLayout()
 }
 
+/**
+ * @return true if `this` height is 0, false otherwise.
+ */
 fun View.heightIsCollapsed(): Boolean = layoutParams.height == 0
 
+/**
+ * Set `this` height to [ViewGroup.LayoutParams.WRAP_CONTENT]. It handles [LinearLayout],
+ * [RelativeLayout] and [FrameLayout] specifically and tries to default to [ViewGroup] otherwise.
+ */
 fun View.heightWrapContent() {
     val params = layoutParams
     params.height = when (layoutParams) {
@@ -144,6 +172,15 @@ fun View.heightWrapContent() {
     requestLayout()
 }
 
+/**
+ * Updates `this` padding values if [predicate] is true (it's true by default).
+ *
+ * @param left [DimenRes] of left padding
+ * @param top [DimenRes] of top padding
+ * @param right [DimenRes] of right padding
+ * @param bottom [DimenRes] of bottom padding
+ * @param predicate defaulted to true, controls whether paddings will be updated or not
+ */
 fun View.setPadding(
     @DimenRes left: Int? = null,
     @DimenRes top: Int? = null,
@@ -163,12 +200,31 @@ fun View.setPadding(
 // endregion
 
 // region ViewGroup
+/**
+ * Creates a [LayoutInflater] from `this` context and calls [LayoutInflater.inflate], with `this`
+ * as the inflated view root.
+ *
+ * @param layoutResource [LayoutRes] of the layout to be inflated
+ * @param attachToRoot if the view should be attached to root or not. Default is false.
+ */
 @JvmOverloads
 fun ViewGroup.inflate(@LayoutRes layoutResource: Int, attachToRoot: Boolean = false): View =
     LayoutInflater.from(context).inflate(layoutResource, this, attachToRoot)
 
+/**
+ * @return `this` children as an [Iterable] of [View].
+ */
 val ViewGroup.children: Iterable<View> get() = (0 until childCount).map(::getChildAt)
 
+/**
+ * Updates `this` margin values. It attempts to cast `this` layoutParams to
+ * [ViewGroup.MarginLayoutParams] and will only update the values if the cast is succesful.
+ *
+ * @param left [DimenRes] of left margin
+ * @param top [DimenRes] of top margin
+ * @param right [DimenRes] of right margin
+ * @param bottom [DimenRes] of bottom margin
+ */
 fun ViewGroup.setMargin(
     @DimenRes left: Int? = null,
     @DimenRes top: Int? = null,
@@ -183,6 +239,10 @@ fun ViewGroup.setMargin(
     }
 }
 
+/**
+ * Updates `this` layoutTransition to allow [LayoutTransition.CHANGING] transition types,
+ * which is needed to animate height changes, for instance.
+ */
 fun ViewGroup.animateChangingTransitions() {
     layoutTransition = LayoutTransition().apply { enableTransitionType(LayoutTransition.CHANGING) }
 }
@@ -191,6 +251,8 @@ fun ViewGroup.animateChangingTransitions() {
 // region TextView
 /**
  * Set `this` text to [textId] and `this` visibility to [View.VISIBLE].
+ *
+ * @param textId [StringRes] to be set.
  */
 fun TextView.visible(@StringRes textId: Int) {
     visible()
@@ -199,6 +261,8 @@ fun TextView.visible(@StringRes textId: Int) {
 
 /**
  * Set `this` text to [text] and `this` visibility to [View.VISIBLE].
+ *
+ * @param text value to be set
  */
 fun TextView.visible(text: String) {
     visible()
@@ -207,6 +271,9 @@ fun TextView.visible(text: String) {
 
 /**
  * Set `this` text to [text] and `this` visibility to [View.VISIBLE] if [predicate] is true.
+ *
+ * @param predicate whether `this` visibility and text will be updated
+ * @param text value to be set
  */
 fun TextView.visibleIf(predicate: Boolean, text: String) {
     visibleIf(predicate)
@@ -216,6 +283,11 @@ fun TextView.visibleIf(predicate: Boolean, text: String) {
 /**
  * Set `this` text to [text] if [predicate] is true and `this` visibility to [View.VISIBLE] if
  * [predicate] is true, to [otherwiseVisibility] if false.
+ *
+ * @param predicate whether `this` visibility and text will be updated
+ * @param text value to be set
+ * @param otherwiseVisibility value to be set if [predicate] is false, should be either
+ * [View.INVISIBLE] or [View.GONE]
  */
 fun TextView.visibleIf(predicate: Boolean, text: String, otherwiseVisibility: Int = View.GONE) {
     visibleIf(predicate, otherwiseVisibility = otherwiseVisibility)
@@ -233,6 +305,9 @@ fun TextView.setOnClickListener(text: String, clickListener: () -> Unit) {
     setOnClickListener { clickListener() }
 }
 
+/**
+ * Calls [TextView.setCompoundDrawablesWithIntrinsicBounds] with null as values for all parameters.
+ */
 fun TextView.clearDrawables() {
     setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
 }
@@ -258,6 +333,9 @@ fun TextView.setupLinks(transformationMethod: TransformationMethod? = null) {
 // endregion
 
 // region EditText
+/**
+ * Sets `this` text to an empty string.
+ */
 fun EditText.clearText() {
     setText("")
 }
@@ -291,12 +369,18 @@ fun TextInputLayout.showError(errorMessage: String) {
     }
 }
 
+/**
+ * Sets `this` error to null.
+ */
 fun TextInputLayout.clearError() {
     error = null
 }
 // endregion
 
 // region EditText
+/**
+ * @return `this` text as string, or an empty string if text was null.
+ */
 fun EditText.textAsString(): String = this.text?.toString().orEmpty()
 
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
