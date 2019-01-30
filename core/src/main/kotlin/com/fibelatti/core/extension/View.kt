@@ -42,14 +42,14 @@ private const val INVALID_RESOURCE_ID = -1
 
 // region View
 /**
- * Set `this` visibility to [View.GONE]
+ * Set `this` visibility to [View.GONE].
  */
 fun View.gone() {
     visibility = View.GONE
 }
 
 /**
- * Set `this` visibility to [View.GONE] if the [predicate] is true
+ * Set `this` visibility to [View.GONE] if the [predicate] is true.
  */
 fun View.goneIf(predicate: Boolean) {
     if (predicate) visibility = View.GONE
@@ -64,19 +64,19 @@ fun View.goneIf(predicate: Boolean, otherwiseVisibility: Int) {
 }
 
 /**
- * @return true if `this` visibility is [View.GONE], false otherwise
+ * @return true if `this` visibility is [View.GONE], false otherwise.
  */
 fun View.isGone(): Boolean = visibility == View.GONE
 
 /**
- * Set `this` visibility to [View.INVISIBLE]
+ * Set `this` visibility to [View.INVISIBLE].
  */
 fun View.invisible() {
     visibility = View.INVISIBLE
 }
 
 /**
- * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true
+ * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true.
  */
 fun View.invisibleIf(predicate: Boolean) {
     if (predicate) visibility = View.INVISIBLE
@@ -91,19 +91,19 @@ fun View.invisibleIf(predicate: Boolean, otherwiseVisibility: Int) {
 }
 
 /**
- * @return true if `this` visibility is [View.INVISIBLE], false otherwise
+ * @return true if `this` visibility is [View.INVISIBLE], false otherwise.
  */
 fun View.isInvisible(): Boolean = visibility == View.INVISIBLE
 
 /**
- * Set `this` visibility to [View.VISIBLE]
+ * Set `this` visibility to [View.VISIBLE].
  */
 fun View.visible() {
     visibility = View.VISIBLE
 }
 
 /**
- * Set `this` visibility to [View.VISIBLE] if the [predicate] is true
+ * Set `this` visibility to [View.VISIBLE] if the [predicate] is true.
  */
 fun View.visibleIf(predicate: Boolean) {
     if (predicate) visibility = View.VISIBLE
@@ -118,7 +118,7 @@ fun View.visibleIf(predicate: Boolean, otherwiseVisibility: Int) {
 }
 
 /**
- * @return true if `this` visibility is [View.VISIBLE], false otherwise
+ * @return true if `this` visibility is [View.VISIBLE], false otherwise.
  */
 fun View.isVisible(): Boolean = visibility == View.VISIBLE
 
@@ -189,16 +189,34 @@ fun ViewGroup.animateChangingTransitions() {
 // endregion
 
 // region TextView
+/**
+ * Set `this` text to [textId] and `this` visibility to [View.VISIBLE].
+ */
 fun TextView.visible(@StringRes textId: Int) {
     visible()
     setText(textId)
 }
 
+/**
+ * Set `this` text to [text] and `this` visibility to [View.VISIBLE].
+ */
 fun TextView.visible(text: String) {
     visible()
     this.text = text
 }
 
+/**
+ * Set `this` text to [text] and `this` visibility to [View.VISIBLE] if [predicate] is true.
+ */
+fun TextView.visibleIf(predicate: Boolean, text: String) {
+    visibleIf(predicate)
+    if (predicate) this.text = text
+}
+
+/**
+ * Set `this` text to [text] if [predicate] is true and `this` visibility to [View.VISIBLE] if
+ * [predicate] is true, to [otherwiseVisibility] if false.
+ */
 fun TextView.visibleIf(predicate: Boolean, text: String, otherwiseVisibility: Int = View.GONE) {
     visibleIf(predicate, otherwiseVisibility = otherwiseVisibility)
     if (predicate) this.text = text
