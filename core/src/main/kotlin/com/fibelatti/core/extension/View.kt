@@ -41,22 +41,85 @@ import com.google.android.material.textfield.TextInputLayout
 private const val INVALID_RESOURCE_ID = -1
 
 // region View
+/**
+ * Set `this` visibility to [View.GONE]
+ */
 fun View.gone() {
     visibility = View.GONE
 }
 
+/**
+ * Set `this` visibility to [View.GONE] if the [predicate] is true
+ */
+fun View.goneIf(predicate: Boolean) {
+    if (predicate) visibility = View.GONE
+}
+
+/**
+ * Set `this` visibility to [View.GONE] if the [predicate] is true,
+ * to [otherwiseVisibility] if false.
+ */
+fun View.goneIf(predicate: Boolean, otherwiseVisibility: Int) {
+    visibility = if (predicate) View.GONE else otherwiseVisibility
+}
+
+/**
+ * @return true if `this` visibility is [View.GONE], false otherwise
+ */
+fun View.isGone(): Boolean = visibility == View.GONE
+
+/**
+ * Set `this` visibility to [View.INVISIBLE]
+ */
 fun View.invisible() {
     visibility = View.INVISIBLE
 }
 
+/**
+ * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true
+ */
+fun View.invisibleIf(predicate: Boolean) {
+    if (predicate) visibility = View.INVISIBLE
+}
+
+/**
+ * Set `this` visibility to [View.INVISIBLE] if the [predicate] is true,
+ * to [otherwiseVisibility] if false.
+ */
+fun View.invisibleIf(predicate: Boolean, otherwiseVisibility: Int) {
+    visibility = if (predicate) View.INVISIBLE else otherwiseVisibility
+}
+
+/**
+ * @return true if `this` visibility is [View.INVISIBLE], false otherwise
+ */
+fun View.isInvisible(): Boolean = visibility == View.INVISIBLE
+
+/**
+ * Set `this` visibility to [View.VISIBLE]
+ */
 fun View.visible() {
     visibility = View.VISIBLE
 }
 
-fun View.visibleIf(predicate: Boolean, otherwiseVisibility: Int = View.GONE) {
+/**
+ * Set `this` visibility to [View.VISIBLE] if the [predicate] is true
+ */
+fun View.visibleIf(predicate: Boolean) {
+    if (predicate) visibility = View.VISIBLE
+}
+
+/**
+ * Set `this` visibility to [View.VISIBLE] if the [predicate] is true,
+ * to [otherwiseVisibility] if false.
+ */
+fun View.visibleIf(predicate: Boolean, otherwiseVisibility: Int) {
     visibility = if (predicate) View.VISIBLE else otherwiseVisibility
 }
 
+/**
+ * @return true if `this` visibility is [View.VISIBLE], false otherwise
+ */
 fun View.isVisible(): Boolean = visibility == View.VISIBLE
 
 fun View.heightCollapse() {
