@@ -30,3 +30,12 @@ dependencies {
 
     testImplementation project(':core-test')
 }
+
+ext {
+    libraryName = "core"
+    artifact = "core"
+    artifactVersion = LibInfo.versionName
+    artifactDescription = LibInfo.libDescription
+}
+
+apply from: rootProject.file("bintray.gradle")

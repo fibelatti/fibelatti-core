@@ -30,3 +30,12 @@ dependencies {
 
     testImplementation project(':arch-components-test')
 }
+
+ext {
+    libraryName = "archcomponents"
+    artifact = "archcomponents"
+    artifactVersion = LibInfo.versionName
+    artifactDescription = LibInfo.libDescription
+}
+
+apply from: rootProject.file("bintray.gradle")

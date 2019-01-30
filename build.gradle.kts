@@ -16,6 +16,7 @@ buildscript {
     dependencies {
         classpath(Classpaths.gradlePlugin)
         classpath(Classpaths.kotlinPlugin)
+        classpath(Classpaths.mavenPlugin)
         classpath(Classpaths.bintrayPlugin)
     }
 }

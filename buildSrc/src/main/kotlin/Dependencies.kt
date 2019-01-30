@@ -12,6 +12,7 @@ object Versions {
 object Classpaths {
     const val gradlePlugin = "com.android.tools.build:gradle:3.2.1"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
+    const val mavenPlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
     const val bintrayPlugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
 }
 

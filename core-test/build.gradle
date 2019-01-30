@@ -16,3 +16,12 @@ dependencies {
     implementation TestDependencies.junit5
     implementation TestDependencies.mockitoCore
 }
+
+ext {
+    libraryName = "core-test"
+    artifact = "core-test"
+    artifactVersion = LibInfo.versionName
+    artifactDescription = LibInfo.libDescription
+}
+
+apply from: rootProject.file("bintray.gradle")

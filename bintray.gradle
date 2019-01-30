@@ -1,0 +1,72 @@
+apply plugin: "com.github.dcendents.android-maven"
+apply plugin: "com.jfrog.bintray"
+
+group = LibInfo.libGroupId
+version = artifactVersion
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+            groupId LibInfo.libGroupId
+            artifactId artifact
+
+            name libraryName
+            description artifactDescription
+            url LibInfo.repoUrl
+
+            licenses {
+                license {
+                    name LibInfo.licenseName
+                    url LibInfo.licenseUrl
+                }
+            }
+            developers {
+                developer {
+                    id LibInfo.devId
+                    name LibInfo.devName
+                    email LibInfo.devEmail
+                }
+            }
+            scm {
+                connection LibInfo.gitUrl
+                developerConnection LibInfo.gitUrl
+                url LibInfo.repoUrl
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = LibInfo.repo
+        name = libraryName
+        desc = artifactDescription
+        websiteUrl = LibInfo.repoUrl
+        vcsUrl = LibInfo.gitUrl
+        licenses = LibInfo.licenses
+        dryRun = false
+        publish = true
+        override = false
+        publicDownloadNumbers = true
+        version {
+            desc = artifactDescription
+        }
+    }
+}
