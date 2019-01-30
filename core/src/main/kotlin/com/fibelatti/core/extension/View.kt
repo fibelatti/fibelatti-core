@@ -160,12 +160,6 @@ fun View.setPadding(
         )
     }
 }
-
-fun View.animateChangingTransitions() {
-    (this as? ViewGroup)?.layoutTransition = LayoutTransition().apply {
-        enableTransitionType(LayoutTransition.CHANGING)
-    }
-}
 // endregion
 
 // region ViewGroup
@@ -187,6 +181,10 @@ fun ViewGroup.setMargin(
         rightMargin = right?.let(resources::getDimensionPixelSize).orZero()
         bottomMargin = bottom?.let(resources::getDimensionPixelSize).orZero()
     }
+}
+
+fun ViewGroup.animateChangingTransitions() {
+    layoutTransition = LayoutTransition().apply { enableTransitionType(LayoutTransition.CHANGING) }
 }
 // endregion
 
