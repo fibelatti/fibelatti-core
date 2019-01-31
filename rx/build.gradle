@@ -12,3 +12,12 @@ dependencies {
     // DI
     implementation Dependencies.javaxInject
 }
+
+ext {
+    libraryName = "${LibInfo.libGroupId}:rx"
+    artifact = "rx"
+    artifactVersion = LibInfo.versionName
+    artifactDescription = LibInfo.libDescription
+}
+
+apply from: rootProject.file("bintray.gradle")

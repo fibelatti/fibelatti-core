@@ -11,3 +11,12 @@ dependencies {
     // Testing
     implementation TestDependencies.junit5
 }
+
+ext {
+    libraryName = "${LibInfo.libGroupId}:rx-test"
+    artifact = "rx-test"
+    artifactVersion = LibInfo.versionName
+    artifactDescription = LibInfo.libDescription
+}
+
+apply from: rootProject.file("bintray.gradle")
