@@ -15,7 +15,7 @@ dependencies {
 }
 
 ext {
-    libraryName = "archcomponents-test"
+    libraryName = "${LibInfo.libGroupId}:archcomponents-test"
     artifact = "archcomponents-test"
     artifactVersion = LibInfo.versionName
     artifactDescription = LibInfo.libDescription

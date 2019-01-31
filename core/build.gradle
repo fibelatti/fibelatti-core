@@ -32,7 +32,7 @@ dependencies {
 }
 
 ext {
-    libraryName = "core"
+    libraryName = "${LibInfo.libGroupId}:core"
     artifact = "core"
     artifactVersion = LibInfo.versionName
     artifactDescription = LibInfo.libDescription
