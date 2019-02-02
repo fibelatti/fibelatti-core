@@ -13,7 +13,7 @@ dependencies {
 }
 
 ext {
-    libraryName = "${LibInfo.libGroupId}:rx-test"
+    libraryName = "rx-test"
     artifact = "rx-test"
     artifactVersion = LibInfo.versionName
     artifactDescription = LibInfo.libDescription
