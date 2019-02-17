@@ -5,25 +5,6 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
--obfuscationdictionary proguard-dictionary.txt
--packageobfuscationdictionary proguard-dictionary.txt
--classobfuscationdictionary proguard-dictionary.txt
-
--repackageclasses 'fibelatti'
-
--optimizationpasses 5
-
-# Debugging
--keepattributes LineNumberTable, SourceFile
-
-# Common attributes
--keepattributes Signature, Exceptions, InnerClasses, EnclosingMethod, *Annotation*
-
-# Remove log calls
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
-}
-
 # Kotlin
 -keep class kotlin.** { *; }
 -dontnote kotlin.coroutines.jvm.internal.DebugMetadataKt**
