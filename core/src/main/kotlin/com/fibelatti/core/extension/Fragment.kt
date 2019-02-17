@@ -27,3 +27,9 @@ inline fun Fragment.inTransaction(
 ) {
     activity?.inTransaction(allowStateLoss, block)
 }
+
+fun Fragment.navigateBack() {
+    activity?.onBackPressed()
+}
+
+fun Fragment.isAtTheTop(): Boolean = activity?.isFragmentAtTheTop(this).orFalse()
