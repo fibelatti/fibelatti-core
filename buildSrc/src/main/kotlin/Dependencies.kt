@@ -4,13 +4,13 @@ object Versions {
     const val compileSdkVersion = 28
     const val buildToolsVersion = "28.0.3"
 
-    internal const val kotlinVersion = "1.3.21"
-    internal const val coroutinesVersion = "1.1.1"
+    internal const val kotlinVersion = "1.3.31"
+    internal const val coroutinesVersion = "1.2.1"
     internal const val lifecycleVersion = "2.0.0"
 }
 
 object Classpaths {
-    const val gradlePlugin = "com.android.tools.build:gradle:3.2.1"
+    const val gradlePlugin = "com.android.tools.build:gradle:3.4.0"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val mavenPlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
     const val bintrayPlugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
