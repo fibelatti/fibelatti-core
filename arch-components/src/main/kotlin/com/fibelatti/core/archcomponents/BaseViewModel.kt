@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -16,12 +16,12 @@ import kotlin.coroutines.CoroutineContext
  */
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
 
-    private val parentJob by lazy { Job() }
+    private val parentJob = SupervisorJob()
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + parentJob
 
     val error: LiveData<Throwable> get() = _error
-    private val _error by lazy { MutableLiveData<Throwable>() }
+    private val _error = MutableLiveData<Throwable>()
 
     @CallSuper
     override fun onCleared() {

@@ -11,8 +11,8 @@ abstract class BaseAdapter<T>(
     private val hasFilter: Boolean = false
 ) : RecyclerView.Adapter<BaseAdapter<T>.ViewHolder>() {
 
-    private val allItems: MutableList<T> by lazy { mutableListOf<T>() }
-    private val filteredItems: MutableList<T> by lazy { mutableListOf<T>() }
+    private val allItems: MutableList<T> = mutableListOf()
+    private val filteredItems: MutableList<T> = mutableListOf()
 
     private val collection: MutableList<T> get() = if (hasFilter) filteredItems else allItems
 
@@ -70,10 +70,10 @@ abstract class BaseAdapterWithDelegates(
     private val hasFilter: Boolean = false
 ) : RecyclerView.Adapter<BaseAdapterWithDelegates.ViewHolder>() {
 
-    protected val delegateAdapters by lazy { SparseArrayCompat<BaseDelegateAdapter>() }
+    protected val delegateAdapters = SparseArrayCompat<BaseDelegateAdapter>()
 
-    protected val allItems: MutableList<BaseViewType> by lazy { mutableListOf<BaseViewType>() }
-    protected val filteredItems: MutableList<BaseViewType> by lazy { mutableListOf<BaseViewType>() }
+    protected val allItems: MutableList<BaseViewType> = mutableListOf()
+    protected val filteredItems: MutableList<BaseViewType> = mutableListOf()
 
     private val collection: MutableList<BaseViewType> get() = if (hasFilter) filteredItems else allItems
 
