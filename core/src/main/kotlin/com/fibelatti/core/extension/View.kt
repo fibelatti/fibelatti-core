@@ -549,6 +549,22 @@ fun isKeyboardSubmit(actionId: Int, event: KeyEvent?): Boolean =
         actionId == EditorInfo.IME_ACTION_DONE ||
         (event != null && event.action == KeyEvent.ACTION_UP && event.keyCode == KeyEvent.KEYCODE_ENTER)
 
+/**
+ * Shorthand function to run an action when receiving a keyboard submit.
+ *
+ * @param block code block to be executed in a keyboard submit is received
+ */
+inline fun EditText.onKeyboardSubmit(crossinline block: EditText.() -> Unit) {
+    setOnEditorActionListener { _, actionId, event ->
+        return@setOnEditorActionListener if (isKeyboardSubmit(actionId, event)) {
+            block()
+            true
+        } else {
+            false
+        }
+    }
+}
+
 fun View.showKeyboard() {
     requestFocus()
     context.getSystemService<InputMethodManager>()?.showSoftInput(this, 0)
