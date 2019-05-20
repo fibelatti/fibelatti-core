@@ -14,9 +14,6 @@ dependencies {
     // DI
     implementation Dependencies.javaxInject
 
-    // Third Party
-    implementation Dependencies.moshiKotlin
-
     // Testing
     testRuntimeOnly TestDependencies.junit5Engine
     testRuntimeOnly TestDependencies.junitVintage

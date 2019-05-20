@@ -2,10 +2,9 @@ package com.fibelatti.core.android;
 
 import android.content.Context;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.fibelatti.core.provider.ResourceProvider;
-import com.squareup.moshi.Moshi;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.inject.Inject;
 import java.io.BufferedReader;
@@ -16,34 +15,32 @@ import java.io.InputStreamReader;
  * `varargs formatArgs: Any` when invoking `getString(resId, formatArgs)`
  */
 public class AppResourceProvider implements ResourceProvider {
+
     private static final String TAG = AppResourceProvider.class.getSimpleName();
 
-    @NotNull
+    @NonNull
     private Context context;
-    @NotNull
-    private Moshi moshi;
 
     @Inject
-    public AppResourceProvider(@NotNull Context context, @NotNull Moshi moshi) {
+    public AppResourceProvider(@NonNull Context context) {
         this.context = context;
-        this.moshi = moshi;
     }
 
-    @NotNull
+    @NonNull
     @Override
     public String getString(int resId) {
         return context.getString(resId);
     }
 
-    @NotNull
+    @NonNull
     @Override
-    public String getString(int resId, @NotNull Object... formatArgs) {
+    public String getString(int resId, @NonNull Object... formatArgs) {
         return context.getString(resId, formatArgs);
     }
 
     @Nullable
     @Override
-    public <T> T getJsonFromAssets(@NotNull String fileName, @NotNull Class<T> clazz) {
+    public String getJsonFromAssets(@NonNull String fileName) {
         try (InputStreamReader reader = new InputStreamReader(context.getAssets().open(fileName))) {
             StringBuilder stringBuilder = new StringBuilder();
             BufferedReader bufferedReader = new BufferedReader(reader);
@@ -54,7 +51,7 @@ public class AppResourceProvider implements ResourceProvider {
                 read = bufferedReader.readLine();
             }
 
-            return moshi.adapter(clazz).fromJson(stringBuilder.toString());
+            return stringBuilder.toString();
         } catch (Exception exception) {
             Log.d(TAG, TAG + ".getJsonFromAssets", exception);
         }

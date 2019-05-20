@@ -11,5 +11,5 @@ interface ResourceProvider {
 
     fun getString(@StringRes resId: Int, vararg formatArgs: Any): String
 
-    fun <T> getJsonFromAssets(fileName: String, clazz: Class<T>): T?
+    fun getJsonFromAssets(fileName: String): String?
 }

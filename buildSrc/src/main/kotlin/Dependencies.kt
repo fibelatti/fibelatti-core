@@ -32,8 +32,6 @@ object Dependencies {
     val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
 
     val javaxInject = "javax.inject:javax.inject:1"
-
-    const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:1.8.0"
 }
 
 object TestDependencies {
