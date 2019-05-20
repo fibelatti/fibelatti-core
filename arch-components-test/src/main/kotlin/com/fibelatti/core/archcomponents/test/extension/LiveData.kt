@@ -9,6 +9,22 @@ import org.mockito.Mockito
 import org.mockito.Mockito.verify
 
 /**
+ * Extension function for testing the receiver [LiveData]. It allows multiple assertions, virtual
+ * time manipulation, etc.
+ */
+inline fun <T> LiveData<T>.observeForTesting(
+    block: () -> Unit
+) {
+    val observer = Observer<T> { }
+    try {
+        observeForever(observer)
+        block()
+    } finally {
+        removeObserver(observer)
+    }
+}
+
+/**
  * Shorthand function to test [LiveData]. It checks whether the current value is equals to [expectedValue].
  */
 infix fun <T> LiveData<T>.currentValueShouldBe(expectedValue: T) {
