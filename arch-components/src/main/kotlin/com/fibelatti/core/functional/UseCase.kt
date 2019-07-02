@@ -10,7 +10,7 @@ import androidx.lifecycle.LiveData
  *
  * val result: LiveData<Result<Bar>> = foo()
  */
-abstract class LiveDataUseCase<Type> where Type : Any {
+abstract class LiveDataUseCase<Type> where Type : Any? {
 
     abstract suspend fun run(): LiveData<Result<Type>>
 
@@ -25,7 +25,7 @@ abstract class LiveDataUseCase<Type> where Type : Any {
  *
  * val result: LiveData<Result<Bar>> = foo(Foo.Params(baz))
  */
-abstract class LiveDataUseCaseWithParams<Type, in Params> where Type : Any {
+abstract class LiveDataUseCaseWithParams<Type, in Params> where Type : Any? {
 
     abstract suspend fun run(params: Params): LiveData<Result<Type>>
 
