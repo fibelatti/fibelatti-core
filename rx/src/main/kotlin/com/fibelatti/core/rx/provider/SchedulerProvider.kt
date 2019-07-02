@@ -6,7 +6,6 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Interface to abstract Rx schedulers from source code.
@@ -27,7 +26,6 @@ interface SchedulerProvider {
  * For [AndroidSchedulers.mainThread] the async messaging is used on API >= 16 to avoid VSYNC locking.
  * On API < 16 this value is ignored.
  */
-@Singleton
 class AppSchedulerProvider @Inject constructor() : SchedulerProvider {
     init {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler {
