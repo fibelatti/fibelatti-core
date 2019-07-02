@@ -6,8 +6,6 @@ dependencies {
 
     // Coroutines
     implementation Dependencies.coroutinesCore
-    implementation Dependencies.coroutinesAndroid
-    implementation TestDependencies.coroutinesTest
 
     // DI
     implementation Dependencies.javaxInject
