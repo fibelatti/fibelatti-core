@@ -10,9 +10,9 @@ package com.fibelatti.core.rx.functional
  */
 abstract class UseCaseWithParams<out Type, in Params> where Type : Any {
 
-    abstract suspend fun run(params: Params): Type
+    abstract fun run(params: Params): Type
 
-    suspend operator fun invoke(params: Params): Type = run(params)
+    operator fun invoke(params: Params): Type = run(params)
 }
 
 /**
