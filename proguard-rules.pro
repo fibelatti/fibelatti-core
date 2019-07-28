@@ -7,9 +7,19 @@
 
 # Kotlin
 -keep class kotlin.** { *; }
+-keep class kotlin.Metadata { *; }
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+    static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
+}
+
 -dontnote kotlin.coroutines.jvm.internal.DebugMetadataKt**
 -dontnote kotlin.internal.PlatformImplementationsKt
 -dontnote kotlin.jvm.internal.Reflection
+-dontnote kotlin.reflect.jvm.internal.KClassImpl**
+-dontwarn kotlinx.atomicfu.AtomicBoolean
 
 # Coroutines
 -keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
@@ -19,11 +29,8 @@
 }
 
 # Material
--keepnames class androidx.** { *; }
--keepnames interface androidx.** { *; }
--keepnames class android.support.** { *; }
--keepnames interface android.support.** { *; }
--keepnames class com.google.android.material.** { *; }
+-dontnote com.google.android.material.**
+-dontnote android.widget.**
 
 # Rx
 -dontnote io.reactivex.**
