@@ -16,21 +16,22 @@ fun throwAssertionError() {
  * Shorthand for [assertEquals] to be written in a more natural way.
  *
  * foo shouldBe bar
+ *
+ * @param expectedValue the expected value of `this`
  */
-infix fun Any?.shouldBe(otherValue: Any?) {
-    assertEquals(otherValue, this)
+infix fun Any?.shouldBe(expectedValue: Any?) {
+    assertEquals(expectedValue, this)
 }
 
 /**
  * Shorthand for [assertTrue] when asserting a list size, to be written in a more natural way.
  *
  * foo sizeShouldBe 10
+ *
+ * @param expectedSize the expected size of the `this`
  */
-infix fun <ListType, T : List<ListType>> T.sizeShouldBe(value: Int) {
-    assertTrue(
-        "Expected size: $value - Actual size: $size",
-        size == value
-    )
+infix fun <ListType, T : List<ListType>> T.sizeShouldBe(expectedSize: Int) {
+    assertTrue("Expected size: $expectedSize - Actual size: $size", size == expectedSize)
 }
 
 /**
