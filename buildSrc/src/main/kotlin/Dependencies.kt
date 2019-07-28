@@ -4,13 +4,13 @@ object Versions {
     const val compileSdkVersion = 28
     const val buildToolsVersion = "28.0.3"
 
-    internal const val kotlinVersion = "1.3.40"
-    internal const val coroutinesVersion = "1.2.1"
+    internal const val kotlinVersion = "1.3.41"
+    internal const val coroutinesVersion = "1.2.2"
     internal const val lifecycleVersion = "2.0.0"
 }
 
 object Classpaths {
-    const val gradlePlugin = "com.android.tools.build:gradle:3.4.0"
+    const val gradlePlugin = "com.android.tools.build:gradle:3.4.2"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val mavenPlugin = "com.github.dcendents:android-maven-gradle-plugin:2.1"
     const val bintrayPlugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
@@ -35,7 +35,7 @@ object Dependencies {
 }
 
 object TestDependencies {
-    private const val junit5Version = "5.3.1"
+    private const val junit5Version = "5.5.1"
 
     const val junit = "junit:junit:4.12"
     const val junit5 = "org.junit.jupiter:junit-jupiter-api:$junit5Version"
