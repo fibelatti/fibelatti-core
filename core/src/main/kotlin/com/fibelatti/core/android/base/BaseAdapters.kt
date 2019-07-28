@@ -26,7 +26,7 @@ abstract class BaseAdapter<T>(
 
     fun getItems(): List<T> = collection
 
-    fun addAll(listItems: List<T>) {
+    fun submitList(listItems: List<T>) {
         allItems.clear()
         allItems.addAll(listItems)
 
@@ -36,6 +36,46 @@ abstract class BaseAdapter<T>(
         }
 
         notifyDataSetChanged()
+    }
+
+    fun addAll(listItems: List<T>) {
+        allItems.addAll(listItems)
+
+        if (hasFilter) {
+            filteredItems.addAll(listItems)
+        }
+    }
+
+    fun addAll(index: Int, listItems: List<T>) {
+        allItems.addAll(index, listItems)
+
+        if (hasFilter) {
+            filteredItems.addAll(index, listItems)
+        }
+    }
+
+    fun add(item: T) {
+        allItems.add(item)
+
+        if (hasFilter) {
+            filteredItems.add(item)
+        }
+    }
+
+    fun add(index: Int, item: T) {
+        allItems.add(index, item)
+
+        if (hasFilter) {
+            filteredItems.add(index, item)
+        }
+    }
+
+    fun clearItems() {
+        allItems.clear()
+
+        if (hasFilter) {
+            filteredItems.clear()
+        }
     }
 
     fun filter(query: String) {
@@ -62,7 +102,9 @@ abstract class BaseAdapter<T>(
     inner class ViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         parent.inflate(getLayoutRes())
     ) {
-        fun bind(item: T) = itemView.bindView(item, this)
+        fun bind(item: T) {
+            itemView.bindView(item, this)
+        }
     }
 }
 
@@ -79,11 +121,11 @@ abstract class BaseAdapterWithDelegates(
 
     override fun getItemCount() = collection.size
 
-    override fun onBindViewHolder(holder: BaseAdapterWithDelegates.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(collection[position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseAdapterWithDelegates.ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         delegateAdapters[viewType]?.getLayoutRes()?.let { ViewHolder(parent, it) }
             ?: throw RuntimeException("No adapter mapped to viewType: $viewType")
 
@@ -91,7 +133,7 @@ abstract class BaseAdapterWithDelegates(
 
     fun getItems(): List<BaseViewType> = collection
 
-    fun addAll(listItems: List<BaseViewType>) {
+    fun submitList(listItems: List<BaseViewType>) {
         allItems.clear()
         allItems.addAll(listItems)
 
@@ -103,10 +145,44 @@ abstract class BaseAdapterWithDelegates(
         notifyDataSetChanged()
     }
 
+    fun addAll(listItems: List<BaseViewType>) {
+        allItems.addAll(listItems)
+
+        if (hasFilter) {
+            filteredItems.addAll(listItems)
+        }
+    }
+
+    fun addAll(index: Int, listItems: List<BaseViewType>) {
+        allItems.addAll(index, listItems)
+
+        if (hasFilter) {
+            filteredItems.addAll(index, listItems)
+        }
+    }
+
+    fun add(item: BaseViewType) {
+        allItems.add(item)
+
+        if (hasFilter) {
+            filteredItems.add(item)
+        }
+    }
+
+    fun add(index: Int, item: BaseViewType) {
+        allItems.add(index, item)
+
+        if (hasFilter) {
+            filteredItems.add(index, item)
+        }
+    }
+
     fun clearItems() {
         allItems.clear()
-        filteredItems.clear()
-        notifyDataSetChanged()
+
+        if (hasFilter) {
+            filteredItems.clear()
+        }
     }
 
     fun filter(query: String) {
@@ -130,8 +206,10 @@ abstract class BaseAdapterWithDelegates(
         @LayoutRes layoutRes: Int
     ) : RecyclerView.ViewHolder(parent.inflate(layoutRes)) {
 
-        fun bind(item: BaseViewType) = delegateAdapters[item.getViewType()]?.bindView()?.let {
-            itemView.it(item, this)
+        fun bind(item: BaseViewType) {
+            delegateAdapters[item.getViewType()]?.bindView()?.let {
+                itemView.it(item, this)
+            }
         }
     }
 }
