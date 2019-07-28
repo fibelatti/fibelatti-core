@@ -26,13 +26,4 @@ inline fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, crossi
  */
 fun <T : Any, L : LiveData<Event<T>>> LifecycleOwner.observeEvent(liveData: L, body: (T) -> Unit) {
     liveData.observe(this, EventObserver(body))
-
-/**
- * Shorthand function that will observe the [liveData] using `this` as the [LifecycleOwner], calling [body] only
- * if the emitted event is not null.
- *
- * @param liveData [LiveData] of [Throwable] to be observed
- * @param body function to be invoked with the emitted event as a parameter
- */
-fun <L : LiveData<Throwable>> LifecycleOwner.error(liveData: L, body: (Throwable) -> Unit) =
-    liveData.observe(this, Observer { it?.let(body) })
+}
