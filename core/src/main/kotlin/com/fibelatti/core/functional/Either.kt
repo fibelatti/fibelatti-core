@@ -142,6 +142,18 @@ fun <R> Result<R>.getOrDefault(defaultValue: R): R = when (this) {
 }
 
 /**
+ * Shorthand to handle error scenarios with a different value as a [Result].
+ *
+ * @param value to be returned wrapped in a [Success] if `this` is an instance of [Failure]
+ *
+ * @return `this` if it is an instance of [Success], a [Success] of value otherwise
+ */
+fun <R> Result<R>.onFailureReturn(value: R): Result<R> = when (this) {
+    is Success -> this
+    is Failure -> Success(value)
+}
+
+/**
  * Alias to [Either.either], that will call the respective function depending on the instance of `this`.
  *
  * @param onSuccess function to be called if `this` is an instance of [Success]

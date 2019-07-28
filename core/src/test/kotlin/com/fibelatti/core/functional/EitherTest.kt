@@ -142,6 +142,16 @@ class EitherTest {
         }
 
         @Test
+        fun `GIVEN Result is Success WHEN onFailureReturn is called THEN Result is returned`() {
+            success.onFailureReturn(false) shouldBe success
+        }
+
+        @Test
+        fun `GIVEN Result is Failure WHEN onFailureReturn is called THEN Success of the value is returned`() {
+            failure.onFailureReturn(false) shouldBe Success(false)
+        }
+
+        @Test
         fun `GIVEN Result is Success WHEN fold is called THEN onSuccess is called`() {
             // WHEN
             success.fold(mockOnSuccess, mockOnFailure)
