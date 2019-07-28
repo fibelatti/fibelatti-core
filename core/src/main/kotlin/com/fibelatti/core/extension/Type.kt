@@ -39,10 +39,23 @@ fun Long?.orZero(): Long = this ?: 0
 // endregion
 // region String
 /**
- * Calls [block] with `this` as its parameter if `this` is not null or empty.
+ * Calls block with `this` as its parameter if `this` is not null or empty.
+ *
+ * @param block the block of code to be invoked
+ * @return the result of block if `this` is not null or empty, null otherwise
  */
-inline fun String?.ifNotNullOrEmpty(block: (String) -> Unit) {
-    if (this != null && isNotEmpty()) block(this)
+inline fun <T> String?.ifNotNullOrEmpty(block: (String) -> T): T? {
+    return if (this != null && isNotEmpty()) block(this) else null
+}
+
+/**
+ * Calls block with `this` as its parameter if `this` is not null or blank.
+ *
+ * @param block the block of code to be invoked
+ * @return the result of block if `this` is not null or blank, null otherwise
+ */
+inline fun <T> String?.ifNotNullOrBlank(block: (String) -> T): T? {
+    return if (this != null && isNotBlank()) block(this) else null
 }
 
 /**
