@@ -10,16 +10,13 @@ import org.mockito.verification.VerificationMode
  * Shorthand to wrap [BDDMockito.given] call with [runBlocking], being able to write tests using a familiar syntax.
  *
  * givenSuspend { foo.bar() }.willReturn(baz)
- */
-fun <T> givenSuspend(methodCall: suspend () -> T): BDDMockito.BDDMyOngoingStubbing<T> =
-    BDDMockito.given(runBlocking { methodCall() })
-
-/**
- * Shorthand to wrap call with [runBlocking], being able to write tests using a similar syntax.
  *
- * val result = callSuspend { foo.bar() }
+ * @param body a block of code to be invoked within [runBlocking]
+ *
+ * @return an instance of [BDDMockito.BDDMyOngoingStubbing] of [T]
  */
-fun <T> callSuspend(methodCall: suspend () -> T): T = runBlocking { methodCall() }
+fun <T> givenSuspend(body: suspend () -> T): BDDMockito.BDDMyOngoingStubbing<T> =
+    BDDMockito.given(runBlocking { body() })
 
 /**
  * Shorthand to wrap [value] to be returned as the result of [BDDMockito.willReturn] with [CompletableDeferred],
