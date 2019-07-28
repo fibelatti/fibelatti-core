@@ -54,7 +54,7 @@ fun <T> BDDMockito.BDDMyOngoingStubbing<Deferred<T>>.willReturnFailedDeferred(va
  * @param mock an [org.mockito.stubbing.OngoingStubbing] to be verified
  * @param methodCall the method of [T] that should have been called
  */
-fun <T> verifySuspend(mock: T, methodCall: suspend T.() -> Any) {
+fun <T> verifySuspend(mock: T, methodCall: suspend T.() -> Any?) {
     runBlocking { BDDMockito.verify(mock).run { methodCall() } }
 }
 
@@ -68,6 +68,6 @@ fun <T> verifySuspend(mock: T, methodCall: suspend T.() -> Any) {
  * @param verificationMode the [VerificationMode] to be applied to [BDDMockito.verify]
  * @param methodCall the method of [T] that should have been called according to the received verificationMode
  */
-fun <T> verifySuspend(mock: T, verificationMode: VerificationMode, methodCall: suspend T.() -> Any) {
+fun <T> verifySuspend(mock: T, verificationMode: VerificationMode, methodCall: suspend T.() -> Any?) {
     runBlocking { BDDMockito.verify(mock, verificationMode).run { methodCall() } }
 }
