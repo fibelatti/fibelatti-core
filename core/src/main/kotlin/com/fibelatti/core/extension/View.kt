@@ -565,7 +565,6 @@ inline fun EditText.onKeyboardSubmit(crossinline block: EditText.() -> Unit) {
 }
 
 fun View.showKeyboard() {
-    requestFocus()
     context.getSystemService<InputMethodManager>()?.showSoftInput(this, 0)
 }
 
