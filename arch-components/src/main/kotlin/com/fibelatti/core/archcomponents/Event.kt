@@ -15,13 +15,16 @@ data class Event<out T>(private val content: T?) {
     private var alreadyObserved = false
 
     /**
+     * Get the current value of [content] and set [alreadyObserved] to true.
+     *
      * @return the [content] if this [Event] was not [alreadyObserved], null otherwise
      */
     fun getContent(): T? = if (alreadyObserved) null else content.also { alreadyObserved = true }
 
     /**
-     * @return the [content], even if [alreadyObserved] is true. Calling this has no change
-     * [alreadyObserved]'s value.
+     * The current value of [content]. Invoking this function will not updated the value of [alreadyObserved].
+     *
+     * @return the [content], even if [alreadyObserved] is true
      */
     fun peekContent(): T? = content
 }
@@ -41,32 +44,26 @@ typealias LiveEvent<T> = LiveData<Event<T>>
 typealias MutableLiveEvent<T> = MutableLiveData<Event<T>>
 
 /**
- * Wraps [value] in an [Event] instance before calling [MutableLiveData.setValue].
+ * Wraps [value] in an [Event] instance and calls [MutableLiveData.setValue] with the result.
  *
  * @param [T] The type of data hold by this instance
  */
-fun <T> MutableLiveEvent<T>.setEvent(value: T?) = setValue(
-    Event(
-        value
-    )
-)
+fun <T> MutableLiveEvent<T>.setEvent(value: T?) {
+    setValue(Event(value))
+}
 
 /**
- * Wraps [value] in an [Event] instance before calling [MutableLiveData.postValue].
+ * Wraps [value] in an [Event] instance and calls [MutableLiveData.postValue] with the result.
  *
  * @param [T] The type of data hold by this instance
  */
-fun <T> MutableLiveEvent<T>.postEvent(value: T?) = postValue(
-    Event(
-        value
-    )
-)
+fun <T> MutableLiveEvent<T>.postEvent(value: T?) {
+    postValue(Event(value))
+}
 
 /**
  * An [Observer] for [Event]s, simplifying the pattern of checking if the [Event]'s content has
- * already been observed.
- *
- * [onEvent] is *only* called if the [Event.alreadyObserved] is false.
+ * already been observed. [onEvent] is *only* called if the [Event.alreadyObserved] is false.
  *
  * @param [T] The type of data hold by this instance
  */

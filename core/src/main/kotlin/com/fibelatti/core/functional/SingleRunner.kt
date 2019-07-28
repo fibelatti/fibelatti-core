@@ -24,6 +24,8 @@ class SingleRunner @Inject constructor() {
      * that they call afterPrevious. Then, one coroutine will enter the block at a time.
      *
      * @param block the suspend function to be executed after the previous work is finished.
+     *
+     * @return the result of block
      */
     suspend fun <T> afterPrevious(block: suspend () -> T): T = mutex.withLock { block() }
 }

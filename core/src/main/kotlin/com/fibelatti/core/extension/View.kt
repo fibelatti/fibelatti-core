@@ -58,8 +58,7 @@ fun View.goneIf(predicate: Boolean) {
 }
 
 /**
- * Set `this` visibility to [View.GONE] if the [predicate] is true,
- * to [otherwiseVisibility] if false.
+ * Set `this` visibility to [View.GONE] if the [predicate] is true, to [otherwiseVisibility] if false.
  *
  * @param predicate whether the visibility will change
  * @param otherwiseVisibility value to be set if [predicate] is false, should be either

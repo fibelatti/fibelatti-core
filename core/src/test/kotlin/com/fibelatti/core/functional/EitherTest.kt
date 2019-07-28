@@ -22,15 +22,15 @@ class EitherTest {
     private val right: Either<Throwable, Boolean> = Either.right(mockValue)
     private val left: Either<Throwable, Boolean> = Either.left(mockError)
 
-    private val mockFnR = spy({ _: Boolean -> Unit })
-    private val mockFnResultR = spy({ _: Boolean -> Success(Unit) })
-    private val mockFnL = spy({ _: Throwable -> Unit })
+    private val mockFnR = spy { _: Boolean -> Unit }
+    private val mockFnResultR = spy { _: Boolean -> Success(Unit) }
+    private val mockFnL = spy { _: Throwable -> Unit }
 
     private val success = Success(mockValue)
     private val failure = Failure(mockError)
 
-    private val mockOnSuccess = spy({ value: Boolean -> value })
-    private val mockOnFailure = spy({ _: Throwable -> mockDefaultValue })
+    private val mockOnSuccess = spy { value: Boolean -> value }
+    private val mockOnFailure = spy { _: Throwable -> mockDefaultValue }
 
     @BeforeEach
     fun setup() {
@@ -292,7 +292,7 @@ class EitherTest {
         @Test
         fun `GIVEN catching is called WHEN block throws an exception THEN Failure is returned`() {
             // GIVEN
-            val function = spy({ true })
+            val function = spy { true }
             given(function.invoke())
                 .willAnswer { throw mockError }
 
@@ -303,7 +303,7 @@ class EitherTest {
         @Test
         fun `WHEN catching is called THEN Success is returned`() {
             // GIVEN
-            val function = spy({ true })
+            val function = spy { true }
 
             // THEN
             catching(function) shouldBe Success(true)

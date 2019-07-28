@@ -7,7 +7,7 @@ import org.mockito.BDDMockito
 import org.mockito.verification.VerificationMode
 
 /**
- * Shorthand to wrap [BDDMockito.given] call with [runBlocking], being able to write tests using a similar syntax.
+ * Shorthand to wrap [BDDMockito.given] call with [runBlocking], being able to write tests using a familiar syntax.
  *
  * givenSuspend { foo.bar() }.willReturn(baz)
  */
@@ -26,6 +26,8 @@ fun <T> callSuspend(methodCall: suspend () -> T): T = runBlocking { methodCall()
  * being able to write tests using a similar syntax.
  *
  * givenSuspend { foo.bar() }.willReturnDeferred(baz)
+ *
+ * @param value the value to be returned wrapped in a [CompletableDeferred]
  */
 fun <T> BDDMockito.BDDMyOngoingStubbing<Deferred<T>>.willReturnDeferred(value: T) {
     willReturn(CompletableDeferred(value))
@@ -36,6 +38,9 @@ fun <T> BDDMockito.BDDMyOngoingStubbing<Deferred<T>>.willReturnDeferred(value: T
  * will always fail, being able to write tests using a similar syntax.
  *
  * givenSuspend { foo.bar() }.willReturnFailedDeferred(Exception())
+ *
+ * @param value the value to be returned wrapped in a [CompletableDeferred] that will
+ * [CompletableDeferred.completeExceptionally]
  */
 fun <T> BDDMockito.BDDMyOngoingStubbing<Deferred<T>>.willReturnFailedDeferred(value: Throwable) {
     willReturn(CompletableDeferred<T>().apply { completeExceptionally(value) })
@@ -45,6 +50,9 @@ fun <T> BDDMockito.BDDMyOngoingStubbing<Deferred<T>>.willReturnFailedDeferred(va
  * Shorthand to verify that suspend functions were called in a mock, being able to write tests using a similar syntax.
  *
  * verifySuspend(foo) { bar() }
+ *
+ * @param mock an [org.mockito.stubbing.OngoingStubbing] to be verified
+ * @param methodCall the method of [T] that should have been called
  */
 fun <T> verifySuspend(mock: T, methodCall: suspend T.() -> Any) {
     runBlocking { BDDMockito.verify(mock).run { methodCall() } }
@@ -55,6 +63,10 @@ fun <T> verifySuspend(mock: T, methodCall: suspend T.() -> Any) {
  * being able to write tests using a similar syntax.
  *
  * verifySuspend(foo, never()) { bar() }
+ *
+ * @param mock an [org.mockito.stubbing.OngoingStubbing] to be verified
+ * @param verificationMode the [VerificationMode] to be applied to [BDDMockito.verify]
+ * @param methodCall the method of [T] that should have been called according to the received verificationMode
  */
 fun <T> verifySuspend(mock: T, verificationMode: VerificationMode, methodCall: suspend T.() -> Any) {
     runBlocking { BDDMockito.verify(mock, verificationMode).run { methodCall() } }

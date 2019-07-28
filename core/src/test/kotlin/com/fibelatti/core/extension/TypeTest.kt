@@ -58,7 +58,7 @@ class TypeTest {
         @Test
         fun `WHEN ifNotNullOrEmpty is called AND string is null THEN nothing happens`() {
             // Arrange
-            val mockFunction = spy({})
+            val mockFunction = spy {}
             val receiver: String? = null
 
             // Act
@@ -71,7 +71,7 @@ class TypeTest {
         @Test
         fun `WHEN ifNotNullOrEmpty is called AND string is empty THEN nothing happens`() {
             // Arrange
-            val mockFunction = spy({})
+            val mockFunction = spy {}
             val receiver: String? = ""
 
             // Act
@@ -84,7 +84,7 @@ class TypeTest {
         @Test
         fun `WHEN ifNotNullOrEmpty is called AND string is not null or empty THEN block is invoked`() {
             // Arrange
-            val mockFunction = spy({})
+            val mockFunction = spy {}
             val receiver: String? = "abc"
 
             // Act

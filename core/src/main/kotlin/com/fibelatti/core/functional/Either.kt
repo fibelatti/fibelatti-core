@@ -82,12 +82,12 @@ typealias Result<T> = Either<Throwable, T>
 /**
  * Semantic alias to [Right] that indicates a successful result.
  */
-typealias Success<T> = Either.Right<T>
+typealias Success<T> = Right<T>
 
 /**
  * Semantic alias to [Left] that indicates a failed result.
  */
-typealias Failure = Either.Left<Throwable>
+typealias Failure = Left<Throwable>
 
 /**
  * Semantic alias to value of [Right].

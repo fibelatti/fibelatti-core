@@ -11,8 +11,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /***
- * This class is implemented in Java because Kotlin is not properly translating
- * `varargs formatArgs: Any` when invoking `getString(resId, formatArgs)`
+ * A default implementation of {@link ResourceProvider} to retrieve Android resources from a {@link Context}.
+ *
+ * This class is implemented in Java because Kotlin is not properly translating `varargs formatArgs: Any` when invoking
+ * `getString(resId, formatArgs)`.
  */
 public class AppResourceProvider implements ResourceProvider {
 

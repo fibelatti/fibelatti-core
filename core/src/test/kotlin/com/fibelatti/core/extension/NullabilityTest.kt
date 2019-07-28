@@ -10,7 +10,7 @@ class NullabilityTest {
 
     @Nested
     inner class SafeLetTests {
-        private val mockFn = spy({})
+        private val mockFn = spy {}
         private val notNullParam = "test"
         private val nullParam = null
 
