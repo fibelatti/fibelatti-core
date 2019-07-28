@@ -120,8 +120,7 @@ fun CharSequence.removeFirst(regex: Regex): String = replaceFirst(regex, "")
 /***
  * [Map.getOrDefault] was added in Java 8. This ExFun mimics its implementation.
  */
-fun <K, V> Map<K, V>.getOrDefaultValue(key: K, defaultValue: V): V =
-    get(key)?.let { it } ?: defaultValue
+fun <K, V> Map<K, V>.getOrDefaultValue(key: K, defaultValue: V): V = get(key) ?: defaultValue
 
 // endregion
 // region List
