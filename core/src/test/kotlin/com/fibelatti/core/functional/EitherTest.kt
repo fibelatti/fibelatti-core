@@ -19,8 +19,8 @@ class EitherTest {
     private val mockDefaultValue = false
     private val mockError = mock<Exception>()
 
-    private val right: Either<Throwable, Boolean> = Either.right(mockValue)
-    private val left: Either<Throwable, Boolean> = Either.left(mockError)
+    private val right: Either<Throwable, Boolean> = Either.Right(mockValue)
+    private val left: Either<Throwable, Boolean> = Either.Left(mockError)
 
     private val mockFnR = spy { _: Boolean -> Unit }
     private val mockFnResultR = spy { _: Boolean -> Success(Unit) }
@@ -39,10 +39,6 @@ class EitherTest {
 
     @Nested
     inner class Left {
-        @Test
-        fun `WHEN Either left is called THEN Left is returned`() {
-            Either.left(mockError) shouldBe Either.Left(mockError)
-        }
 
         @Test
         fun `GIVEN Either is Left AND either is called THEN fnL is invoked`() {
@@ -67,10 +63,6 @@ class EitherTest {
 
     @Nested
     inner class Right {
-        @Test
-        fun `WHEN Either right is called THEN Right is returned`() {
-            Either.right(mockValue) shouldBe Either.Right(mockValue)
-        }
 
         @Test
         fun `GIVEN Either is Right AND either is called THEN fnR is invoked`() {

@@ -44,24 +44,6 @@ sealed class Either<out L, out R> {
         is Right -> b
     }
 
-    companion object {
-        /**
-         * Static constructor to create an instance of [Left].
-         *
-         * @param a value to be hold
-         */
-        @JvmStatic
-        fun <L> left(a: L) = Either.Left(a)
-
-        /**
-         * Static constructor to create an instance of [Right].
-         *
-         * @param b value to be hold
-         */
-        @JvmStatic
-        fun <R> right(b: R) = Either.Right(b)
-    }
-
     /**
      * Represents the left side of [Either] class which by convention is a "Failure".
      */
