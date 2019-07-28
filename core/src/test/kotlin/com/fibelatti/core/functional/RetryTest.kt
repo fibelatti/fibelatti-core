@@ -1,7 +1,7 @@
 package com.fibelatti.core.functional
 
-import com.fibelatti.core.test.extension.callSuspend
 import com.fibelatti.core.test.extension.shouldBe
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -24,7 +24,7 @@ class RetryTest {
                 .willCallRealMethod()
 
             // WHEN
-            val result = callSuspend { retryIO { mockFn.default() } }
+            val result = runBlocking { retryIO { mockFn.default() } }
 
             // THEN
             result shouldBe Unit
@@ -44,7 +44,7 @@ class RetryTest {
 
             // THEN
             assertThrows<Exception> {
-                callSuspend { retryIO { mockFn.default() } }
+                runBlocking { retryIO { mockFn.default() } }
             }
         }
     }
