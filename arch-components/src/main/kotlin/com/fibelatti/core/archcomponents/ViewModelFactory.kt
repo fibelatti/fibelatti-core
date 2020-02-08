@@ -1,4 +1,4 @@
-package com.fibelatti.core.di
+package com.fibelatti.core.archcomponents
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
