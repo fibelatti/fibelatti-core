@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -23,10 +22,10 @@ class ViewModelFactory @Inject constructor(
             throw RuntimeException(e)
         }
     }
-
-    inline fun <reified T : ViewModel> get(activity: FragmentActivity): T =
-        ViewModelProviders.of(activity, this)[T::class.java]
-
-    inline fun <reified T : ViewModel> get(fragment: Fragment): T =
-        ViewModelProviders.of(fragment, this)[T::class.java]
 }
+
+inline fun <reified T : ViewModel> ViewModelProvider.Factory.get(activity: FragmentActivity): T =
+    ViewModelProvider(activity, this).get(T::class.java)
+
+inline fun <reified T : ViewModel> ViewModelProvider.Factory.get(fragment: Fragment): T =
+    ViewModelProvider(fragment, this).get(T::class.java)
