@@ -3,7 +3,7 @@ object LibInfo {
     private const val versionMajor = 2
     private const val versionMinor = 0
     private const val versionPatch = 0
-    private const val versionAlpha = 1
+    private const val versionAlpha = 2
 
     private const val majorMultiplier = 1000000
     private const val minorMultiplier = 10000
