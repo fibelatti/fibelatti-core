@@ -34,13 +34,18 @@ Download
 
 ```groovy
 dependencies {
-    implementation 'com.fibelatti.core:core:1.0.0'
-    implementation 'com.fibelatti.core:archcomponents:1.0.0'
+    implementation 'com.fibelatti.core:core:2.0.0-alpha3'
+    implementation 'com.fibelatti.core:archcomponents:2.0.0-alpha3'
 
-    testImplementation 'com.fibelatti.core:core-test:1.0.0'
-    testImplementation 'com.fibelatti.core:archcomponents-test:1.0.0'
+    testImplementation 'com.fibelatti.core:core-test:2.0.0-alpha3'
+    testImplementation 'com.fibelatti.core:archcomponents-test:2.0.0-alpha3'
 }
 ```
+
+Example usage
+--------
+
+For an example usage of these modules please see [Pinkt for Pinboard](https://github.com/fibelatti/pinboard-kotlin).
 
 License
 --------
