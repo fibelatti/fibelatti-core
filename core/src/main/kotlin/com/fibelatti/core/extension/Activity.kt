@@ -2,6 +2,32 @@ package com.fibelatti.core.extension
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentFactory
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+
+/**
+ * Shorthand function to perform a [FragmentTransaction] using the [FragmentManager] of this [FragmentActivity].
+ *
+ * @param allowStateLoss if [FragmentTransaction.commitAllowingStateLoss] can be used in case [FragmentManager.isStateSaved] is false
+ * @param block the block to be invoked in the transaction
+ */
+inline fun FragmentActivity.inTransaction(
+    allowStateLoss: Boolean = false,
+    block: FragmentTransaction.() -> Unit
+) {
+    with(supportFragmentManager) {
+        beginTransaction().apply {
+            block()
+
+            if (!isStateSaved) {
+                commit()
+            } else if (allowStateLoss) {
+                commitAllowingStateLoss()
+            }
+        }
+    }
+}
 
 /**
  * Shorthand function to check if a [Fragment] is the last in the list of fragments of this [FragmentActivity].
@@ -12,3 +38,14 @@ import androidx.fragment.app.FragmentActivity
  */
 fun FragmentActivity.isFragmentAtTheTop(fragment: Fragment): Boolean =
     supportFragmentManager.fragments.last() == fragment
+
+/**
+ * Shorthand function to create an instance of [Fragment] with type [T] using the [FragmentFactory]
+ * of this [FragmentActivity].
+ *
+ * @param T the type of the [Fragment] to be created
+ *
+ * @return the new instance
+ */
+inline fun <reified T : Fragment> FragmentActivity.createFragment(): Fragment =
+    supportFragmentManager.fragmentFactory.createInstance<T>()
