@@ -11,16 +11,17 @@ Built on top of
 --------
 
 ```groovy
-"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41"
+"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.61"
 
-"androidx.appcompat:appcompat:1.0.2"
-"com.google.android.material:material:1.0.0"
+"androidx.appcompat:appcompat:1.1.0"
+"androidx.fragment:fragment:1.2.0"
+"com.google.android.material:material:1.1.0-rc02"
 
-"androidx.lifecycle:lifecycle-extensions:2.0.0"
-"androidx.lifecycle:lifecycle-compiler:2.0.0"
+"androidx.lifecycle:lifecycle-extensions:2.2.0"
+"androidx.lifecycle:lifecycle-compiler:2.2.0"
 
-"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.2"
-"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.2"
+"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
+"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
 
 "io.reactivex.rxjava2:rxjava:2.2.4"
 "io.reactivex.rxjava2:rxandroid:2.1.0"
