@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.BDDMockito.given
-import org.mockito.BDDMockito.verifyZeroInteractions
+import org.mockito.BDDMockito.then
 import org.mockito.Mockito.reset
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verify
@@ -47,7 +47,7 @@ class EitherTest {
 
             // THEN
             verify(mockFnL).invoke(mockError)
-            verifyZeroInteractions(mockFnR)
+            then(mockFnR).shouldHaveNoInteractions()
         }
 
         @Test
@@ -71,7 +71,7 @@ class EitherTest {
 
             // THEN
             verify(mockFnR).invoke(mockValue)
-            verifyZeroInteractions(mockFnL)
+            then(mockFnL).shouldHaveNoInteractions()
         }
 
         @Test
@@ -133,7 +133,7 @@ class EitherTest {
         @Test
         fun `GIVEN Result is Success WHEN getOrElse is called THEN value is returned`() {
             success.getOrElse(mockFnL) shouldBe mockValue
-            verifyZeroInteractions(mockFnL)
+            then(mockFnL).shouldHaveNoInteractions()
         }
 
         @Test
@@ -158,7 +158,7 @@ class EitherTest {
 
             // THEN
             verify(mockOnSuccess).invoke(mockValue)
-            verifyZeroInteractions(mockOnFailure)
+            then(mockOnFailure).shouldHaveNoInteractions()
         }
 
         @Test
@@ -167,7 +167,7 @@ class EitherTest {
             success.onFailure(mockFnL)
 
             // THEN
-            verifyZeroInteractions(mockFnL)
+            then(mockFnL).shouldHaveNoInteractions()
         }
 
         @Test
@@ -230,6 +230,7 @@ class EitherTest {
             assertThrows<Exception> { failure.throwOnFailure() }
         }
 
+        @Suppress("IMPLICIT_NOTHING_AS_TYPE_PARAMETER")
         @Test
         fun `GIVEN Result is Failure WHEN getOrThrow is called THEN error is thrown`() {
             assertThrows<Exception> { failure.getOrThrow() }
@@ -251,7 +252,7 @@ class EitherTest {
             failure.fold(mockOnSuccess, mockOnFailure)
 
             // THEN
-            verifyZeroInteractions(mockOnSuccess)
+            then(mockOnSuccess).shouldHaveNoInteractions()
             verify(mockOnFailure).invoke(mockError)
         }
 
@@ -270,7 +271,7 @@ class EitherTest {
             failure.onSuccess(mockFnR)
 
             // THEN
-            verifyZeroInteractions(mockFnR)
+            then(mockFnR).shouldHaveNoInteractions()
         }
 
         @Test
@@ -280,7 +281,7 @@ class EitherTest {
 
             // THEN
             result shouldBe failure
-            verifyZeroInteractions(mockFnResultR)
+            then(mockFnResultR).shouldHaveNoInteractions()
         }
 
         @Test

@@ -2,9 +2,9 @@ package com.fibelatti.core.extension
 
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.mockito.BDDMockito.then
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyZeroInteractions
 
 class NullabilityTest {
 
@@ -36,7 +36,7 @@ class NullabilityTest {
                 }
 
                 // THEN
-                verifyZeroInteractions(mockFn)
+                then(mockFn).shouldHaveNoInteractions()
             }
         }
 
@@ -62,7 +62,7 @@ class NullabilityTest {
                 }
 
                 // THEN
-                verifyZeroInteractions(mockFn)
+                then(mockFn).shouldHaveNoInteractions()
             }
         }
 
@@ -88,7 +88,7 @@ class NullabilityTest {
                 }
 
                 // THEN
-                verifyZeroInteractions(mockFn)
+                then(mockFn).shouldHaveNoInteractions()
             }
         }
 
@@ -114,7 +114,7 @@ class NullabilityTest {
                 }
 
                 // THEN
-                verifyZeroInteractions(mockFn)
+                then(mockFn).shouldHaveNoInteractions()
             }
         }
     }

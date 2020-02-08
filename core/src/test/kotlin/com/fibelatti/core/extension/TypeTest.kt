@@ -26,6 +26,7 @@ class TypeTest {
             assertEquals(someValue, result)
         }
 
+        @Suppress("IMPLICIT_NOTHING_AS_TYPE_PARAMETER")
         @Test
         fun `WHEN generic type is null THEN orThrow throws exception`() {
             assertThrows<Exception> { null.orThrow(Exception()) }
