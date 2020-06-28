@@ -9,6 +9,8 @@ dependencies {
     implementation Dependencies.coroutinesAndroid
 
     // Support Library
+    implementation Dependencies.activity
+    implementation Dependencies.fragments
     implementation Dependencies.supportAnnotations
 
     // Architecture Components

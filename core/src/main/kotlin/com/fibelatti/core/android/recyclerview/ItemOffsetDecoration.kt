@@ -16,9 +16,7 @@ class ItemOffsetDecoration(private val itemOffset: Int) : RecyclerView.ItemDecor
     )
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-        val layoutParams = view.layoutParams
-
-        when (layoutParams) {
+        when (val layoutParams = view.layoutParams) {
             is GridLayoutManager.LayoutParams -> {
                 layoutParams.apply {
                     if (viewLayoutPosition == RecyclerView.NO_POSITION) {

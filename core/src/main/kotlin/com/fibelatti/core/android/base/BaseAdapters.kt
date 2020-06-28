@@ -4,6 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.collection.SparseArrayCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fibelatti.core.extension.inflate
 
@@ -223,4 +225,33 @@ interface BaseDelegateAdapter {
 
 interface BaseViewType {
     fun getViewType(): Int
+}
+
+abstract class BaseListAdapter<T>(
+    diffUtil: DiffUtil.ItemCallback<T>
+) :  ListAdapter<T, BaseListAdapter<T>.ViewHolder>(diffUtil) {
+
+    override fun getItemCount(): Int = currentList.size
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder = ViewHolder(parent)
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(currentList[position])
+    }
+
+    @LayoutRes
+    abstract fun getLayoutRes(): Int
+
+    abstract fun View.bindView(item: T, viewHolder: ViewHolder)
+
+    inner class ViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+        parent.inflate(getLayoutRes())
+    ) {
+        fun bind(item: T) {
+            itemView.bindView(item, this)
+        }
+    }
 }

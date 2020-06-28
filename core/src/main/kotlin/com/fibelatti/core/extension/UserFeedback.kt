@@ -16,7 +16,6 @@ import com.google.android.material.snackbar.Snackbar
  * @param message the message to show
  * @param duration [Toast.LENGTH_SHORT] (default) or [Toast.LENGTH_LONG]
  */
-@JvmOverloads
 fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()
 }
@@ -31,7 +30,6 @@ fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
  * @param duration [Snackbar.LENGTH_SHORT] (default), [Snackbar.LENGTH_LONG] or [Snackbar.LENGTH_INDEFINITE]
  * @param additionalConfiguration optional additional configuration
  */
-@JvmOverloads
 fun View.snackbar(
     message: String,
     @ColorRes textColor: Int = -1,

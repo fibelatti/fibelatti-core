@@ -206,7 +206,6 @@ fun View.setPadding(
  * @param layoutResource [LayoutRes] of the layout to be inflated
  * @param attachToRoot if the view should be attached to root or not, default is false
  */
-@JvmOverloads
 fun ViewGroup.inflate(@LayoutRes layoutResource: Int, attachToRoot: Boolean = false): View =
     LayoutInflater.from(context).inflate(layoutResource, this, attachToRoot)
 

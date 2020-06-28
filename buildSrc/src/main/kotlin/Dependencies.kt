@@ -21,9 +21,10 @@ object Dependencies {
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
 
     const val supportLibrary = "androidx.appcompat:appcompat:1.1.0"
-    const val fragments = "androidx.fragment:fragment:1.2.0"
+    const val activity = "androidx.activity:activity-ktx:1.1.0"
+    const val fragments = "androidx.fragment:fragment-ktx:1.2.4"
     const val materialDesign = "com.google.android.material:material:1.1.0"
-    const val supportAnnotations = "androidx.annotation:annotation:1.0.0"
+    const val supportAnnotations = "androidx.annotation:annotation:1.1.0"
 
     const val archComponents = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
     const val archComponentsCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycleVersion}"
