@@ -3,7 +3,7 @@ fibelatti-core
 
 [![Language](https://img.shields.io/badge/language-kotlin-brightgreen.svg)](https://www.github.com/fibelatti/fibelatti-core)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CircleCI](https://circleci.com/gh/fibelatti/fibelatti-core/tree/master.svg?style=svg)](https://circleci.com/gh/fibelatti/fibelatti-core/tree/master)
+[![Android CI](https://github.com/fibelatti/fibelatti-core/workflows/Android%20CI/badge.svg)](https://github.com/fibelatti/fibelatti-core/actions?query=workflow%3A%22Android+CI%22)
 
 A collection of base classes and extension functions used to build a modern Android project in Kotlin.
 
