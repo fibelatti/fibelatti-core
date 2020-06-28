@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package com.fibelatti.core.extension
 
 import android.animation.LayoutTransition
@@ -368,16 +370,36 @@ fun EditText.clearText() {
  * Shorthand function to set text listeners to an [EditText].
  */
 inline fun EditText.addTextChangedListener(
-    crossinline beforeTextChanged: (charSequence: CharSequence, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
-    crossinline onTextChanged: (charSequence: CharSequence, start: Int, before: Int, count: Int) -> Unit = { _, _, _, _ -> },
+    crossinline beforeTextChanged: (
+        charSequence: CharSequence,
+        start: Int,
+        count: Int,
+        after: Int
+    ) -> Unit = { _, _, _, _ -> },
+    crossinline onTextChanged: (
+        charSequence: CharSequence,
+        start: Int,
+        before: Int,
+        count: Int
+    ) -> Unit = { _, _, _, _ -> },
     crossinline afterTextChanged: (text: String) -> Unit = {}
 ) {
     addTextChangedListener(object : TextWatcher {
-        override fun beforeTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {
+        override fun beforeTextChanged(
+            charSequence: CharSequence,
+            start: Int,
+            count: Int,
+            after: Int
+        ) {
             beforeTextChanged(charSequence, start, count, after)
         }
 
-        override fun onTextChanged(charSequence: CharSequence, start: Int, before: Int, count: Int) {
+        override fun onTextChanged(
+            charSequence: CharSequence,
+            start: Int,
+            before: Int,
+            count: Int
+        ) {
             onTextChanged(charSequence, start, before, count)
         }
 
@@ -423,9 +445,11 @@ fun EditText.textAsString(): String = this.text?.toString().orEmpty()
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            // Intentionally empty
         }
 
         override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            // Intentionally empty
         }
 
         override fun afterTextChanged(editable: Editable?) {
@@ -493,7 +517,11 @@ fun RecyclerView.withLinearLayoutManager(
     reversed: Boolean = false
 ): RecyclerView = apply {
     layoutManager =
-        LinearLayoutManager(context, if (vertical) RecyclerView.VERTICAL else RecyclerView.HORIZONTAL, reversed)
+        LinearLayoutManager(
+            context,
+            if (vertical) RecyclerView.VERTICAL else RecyclerView.HORIZONTAL,
+            reversed
+        )
 }
 
 /**
@@ -522,7 +550,12 @@ fun AppCompatActivity.setupToolbar(
         setDisplayShowTitleEnabled(displayShowTitleEnabled)
 
         if (showUpArrowAsCloseIcon && closeIconDrawableRes != null) {
-            setHomeAsUpIndicator(AppCompatResources.getDrawable(this@setupToolbar, closeIconDrawableRes))
+            setHomeAsUpIndicator(
+                AppCompatResources.getDrawable(
+                    this@setupToolbar,
+                    closeIconDrawableRes
+                )
+            )
         }
     }
 }
@@ -593,7 +626,7 @@ fun TypedArray.resolveResource(context: Context, @StyleableRes id: Int): Drawabl
     try {
         getResourceId(id, INVALID_RESOURCE_ID).takeIf { it != INVALID_RESOURCE_ID }
             ?.let { AppCompatResources.getDrawable(context, it) }
-    } catch (exception: Exception) {
+    } catch (ignored: RuntimeException) {
         null
     }
 // endregion

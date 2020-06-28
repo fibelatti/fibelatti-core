@@ -89,11 +89,12 @@ fun <T> Completable.emitFinally(item: T): Single<T> =
     }
 
 /**
- * Creates a Completable that will subscribe to `this` and once onComplete is called then subscribe will be called on
- * [chainableCompletableInvocation]. The new completable will emit the values emitted by [chainableCompletableInvocation].
+ * Creates a Completable that will subscribe to `this` and once onComplete is called then subscribe
+ * will be called on [chainableCompletableInvocation]. The new completable will emit the values emitted
+ * by [chainableCompletableInvocation].
  *
- * @param chainableCompletableInvocation Completable source that will only be subscribed to if `this` completes without
- * error
+ * @param chainableCompletableInvocation Completable source that will only be subscribed to if `this`
+ * completes without error
  *
  * @return the new Completable
  */

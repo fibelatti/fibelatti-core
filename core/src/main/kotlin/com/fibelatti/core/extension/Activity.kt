@@ -10,24 +10,24 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 /**
- * Shorthand function to perform a [FragmentTransaction] using the [FragmentManager] of this [FragmentActivity].
+ * Shorthand function to perform a [FragmentTransaction] using the [FragmentManager] of this
+ * [FragmentActivity].
  *
- * @param allowStateLoss if [FragmentTransaction.commitAllowingStateLoss] can be used in case [FragmentManager.isStateSaved] is false
+ * @param allowStateLoss if [FragmentTransaction.commitAllowingStateLoss] can be used in case
+ * [FragmentManager.isStateSaved] is false
  * @param block the block to be invoked in the transaction
  */
 inline fun FragmentActivity.inTransaction(
     allowStateLoss: Boolean = false,
     block: FragmentTransaction.() -> Unit
 ) {
-    with(supportFragmentManager) {
-        beginTransaction().apply {
-            block()
+    supportFragmentManager.beginTransaction().apply {
+        block()
 
-            if (!isStateSaved) {
-                commit()
-            } else if (allowStateLoss) {
-                commitAllowingStateLoss()
-            }
+        if (!supportFragmentManager.isStateSaved) {
+            commit()
+        } else if (allowStateLoss) {
+            commitAllowingStateLoss()
         }
     }
 }

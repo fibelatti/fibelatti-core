@@ -29,10 +29,10 @@ object Dependencies {
     const val archComponents = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
     const val archComponentsCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycleVersion}"
 
-    val rxJava = "io.reactivex.rxjava2:rxjava:2.2.4"
-    val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
+    const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.4"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
 
-    val javaxInject = "javax.inject:javax.inject:1"
+    const val javaxInject = "javax.inject:javax.inject:1"
 }
 
 object TestDependencies {

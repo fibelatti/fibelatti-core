@@ -1,10 +1,7 @@
 import com.android.build.gradle.LibraryExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-apply {
-    from("ktlint.gradle")
-    from("detekt.gradle")
-}
+apply(from = "detekt.gradle")
 
 buildscript {
     repositories {
@@ -33,17 +30,13 @@ subprojects {
     configureLibrary()
 }
 
-tasks.getByName("clean") {
-    delete(rootProject.buildDir)
-}
-
-gradle.projectsEvaluated {
-    subprojects {
+subprojects {
+    afterEvaluate {
         tasks.withType<KotlinCompile>().all {
             kotlinOptions.jvmTarget = "1.8"
         }
 
-        tasks.getByName("preBuild").dependsOn(":detekt", ":ktlint")
+        tasks.findByName("preBuild")?.dependsOn(":detekt")
     }
 }
 

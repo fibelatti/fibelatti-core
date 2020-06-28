@@ -38,22 +38,20 @@ fun View.snackbar(
     duration: Int = Snackbar.LENGTH_SHORT,
     additionalConfiguration: Snackbar.() -> Unit = {}
 ) {
-    Snackbar.make(this, message, duration)
-        .apply {
-            if (textColor != -1) {
-                setTextColor(ContextCompat.getColor(context, textColor))
-            }
-            if (marginSize != -1) {
-                val margin = context.resources.getDimensionPixelSize(marginSize)
-                view.layoutParams = (view.layoutParams as ViewGroup.MarginLayoutParams).apply {
-                    setMargins(margin, margin, margin, margin)
-                }
-            }
-            if (background != -1) {
-                view.background = ContextCompat.getDrawable(context, background)
-            }
-
-            additionalConfiguration()
+    val snackbar = Snackbar.make(this, message, duration)
+    if (textColor != -1) {
+        snackbar.setTextColor(ContextCompat.getColor(context, textColor))
+    }
+    if (marginSize != -1) {
+        val margin = context.resources.getDimensionPixelSize(marginSize)
+        snackbar.view.layoutParams = (snackbar.view.layoutParams as ViewGroup.MarginLayoutParams).apply {
+            setMargins(margin, margin, margin, margin)
         }
-        .show()
+    }
+    if (background != -1) {
+        snackbar.view.background = ContextCompat.getDrawable(context, background)
+    }
+
+    snackbar.additionalConfiguration()
+    snackbar.show()
 }

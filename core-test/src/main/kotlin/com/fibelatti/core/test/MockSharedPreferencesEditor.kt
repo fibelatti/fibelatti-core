@@ -76,5 +76,7 @@ open class MockSharedPreferencesEditor : SharedPreferences.Editor {
     /**
      * Stub method that does nothing.
      */
-    override fun apply() {}
+    override fun apply() {
+        // Intentionally empty
+    }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("ComplexCondition")
+
 package com.fibelatti.core.extension
 
 // region Null checks with smart cast for multiple parameters (a multi-let)

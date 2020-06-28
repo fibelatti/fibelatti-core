@@ -179,7 +179,8 @@ inline fun <T, R> Result<T>.map(onSuccess: (T) -> Result<R>): Result<R> = when (
 }
 
 /**
- * Calls a mapper function wrapped by [catching] with the value of `this` as its parameter if `this` is an instance of [Success].
+ * Calls a mapper function wrapped by [catching] with the value of `this` as its parameter if `this`
+ * is an instance of [Success].
  *
  * @param fn mapper function to be invoked with `this` value
  *

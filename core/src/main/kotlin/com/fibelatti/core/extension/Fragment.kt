@@ -10,7 +10,8 @@ import androidx.fragment.app.FragmentTransaction
  * Shorthand function to perform a [FragmentTransaction] using the [FragmentManager] of the parent
  * [FragmentActivity].
  *
- * @param allowStateLoss if [FragmentTransaction.commitAllowingStateLoss] can be used in case [FragmentManager.isStateSaved] is false
+ * @param allowStateLoss if [FragmentTransaction.commitAllowingStateLoss] can be used in case
+ * [FragmentManager.isStateSaved] is false
  * @param block the block to be invoked in the transaction
  */
 inline fun Fragment.inTransaction(

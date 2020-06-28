@@ -61,6 +61,7 @@ inline fun <T> String?.ifNotNullOrBlank(block: (String) -> T): T? {
 /**
  * @return an empty string
  */
+@Suppress("FunctionOnlyReturningConstant")
 fun String.Companion.empty(): String = ""
 
 /**
@@ -104,7 +105,7 @@ fun String.equalsIgnoreCase(otherString: String) = equals(otherString, true)
 fun String.isInt(): Boolean = try {
     toInt()
     true
-} catch (e: Exception) {
+} catch (ignored: Exception) {
     false
 }
 

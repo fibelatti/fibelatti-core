@@ -116,7 +116,7 @@ class EitherTest {
         fun `GIVEN Result is Success WHEN throwOnFailure is called THEN nothing happens`() {
             try {
                 success.throwOnFailure()
-            } catch (exception: Exception) {
+            } catch (ignored: Exception) {
                 throwAssertionError()
             }
         }
@@ -125,7 +125,7 @@ class EitherTest {
         fun `GIVEN Result is Success WHEN getOrThrow is called THEN value is returned`() {
             try {
                 success.getOrThrow() shouldBe mockValue
-            } catch (exception: Exception) {
+            } catch (ignored: Exception) {
                 throwAssertionError()
             }
         }
