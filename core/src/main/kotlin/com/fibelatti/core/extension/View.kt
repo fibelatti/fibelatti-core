@@ -32,6 +32,7 @@ import androidx.annotation.StyleableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -176,24 +177,25 @@ fun View.heightWrapContent() {
 /**
  * Updates `this` padding values if [predicate] is true (it's true by default).
  *
- * @param left [DimenRes] of left padding
+ * @param start [DimenRes] of start padding
  * @param top [DimenRes] of top padding
- * @param right [DimenRes] of right padding
+ * @param end [DimenRes] of end padding
  * @param bottom [DimenRes] of bottom padding
- * @param predicate defaulted to true, controls whether paddings will be updated or not
+ * @param predicate defaulted to true, controls whether padding will be updated or not
  */
 fun View.setPadding(
-    @DimenRes left: Int? = null,
+    @DimenRes start: Int? = null,
     @DimenRes top: Int? = null,
-    @DimenRes right: Int? = null,
+    @DimenRes end: Int? = null,
     @DimenRes bottom: Int? = null,
     predicate: Boolean = true
 ) {
     if (predicate) {
-        setPadding(
-            left?.let(resources::getDimensionPixelSize).orZero(),
+        ViewCompat.setPaddingRelative(
+            this,
+            start?.let(resources::getDimensionPixelSize).orZero(),
             top?.let(resources::getDimensionPixelSize).orZero(),
-            right?.let(resources::getDimensionPixelSize).orZero(),
+            end?.let(resources::getDimensionPixelSize).orZero(),
             bottom?.let(resources::getDimensionPixelSize).orZero()
         )
     }
