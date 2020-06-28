@@ -53,19 +53,22 @@ fun Project.configureLibrary() {
 
     configure<LibraryExtension> {
         compileSdkVersion(Versions.compileSdkVersion)
-        buildToolsVersion(Versions.buildToolsVersion)
 
         defaultConfig {
             versionCode = LibInfo.versionCode
             versionName = LibInfo.versionName
             minSdkVersion(Versions.minSdkVersion)
             targetSdkVersion(Versions.targetSdkVersion)
-            consumerProguardFiles("$rootProject.rootDir.absolutePath/proguard-rules.pro")
+            consumerProguardFiles("${rootProject.rootDir.absolutePath}/proguard-rules.pro")
+        }
+
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
         }
 
         sourceSets {
-            getByName("main").java.srcDirs("src/main/kotlin")
-            getByName("test").java.srcDirs("src/test/kotlin")
+            names.map { name -> getByName(name).java.srcDirs("src/$name/kotlin") }
         }
     }
 }
